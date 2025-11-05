@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestión de Donaciones</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <div class="container py-4">
+
+        <!-- Encabezado -->
+        <div class="d-flex justify-content-between align-items-start mb-4">
+            <div>
+                <h4 class="fw-bold mb-1">Gestión de Donaciones</h4>
+                <p class="text-secondary mb-0">Administra todas las donaciones de la iglesia</p>
+            </div>
+            <button class="btn btn-primary">
+                <i class="bi bi-plus-lg me-1"></i> Nueva Donación
+            </button>
+        </div>
+
+        <!-- Tarjetas resumen -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h6 class="text-secondary">Total General</h6>
+                        <h3 class="fw-bold">$22.000</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h6 class="text-secondary">Número de Donaciones</h6>
+                        <h3 class="fw-bold">5</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h6 class="text-secondary">Promedio</h6>
+                        <h3 class="fw-bold">$4400</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla -->
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <span class="input-group-text bg-transparent border-end-0">
+                        <i class="bi bi-search text-secondary"></i>
+                    </span>
+                    <input type="text" class="form-control border-start-0" placeholder="Buscar por nombre o tipo...">
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Donante</th>
+                                <th>Tipo</th>
+                                <th>Monto</th>
+                                <th>Fecha</th>
+                                <th>Método</th>
+                                <th>Notas</th>
+                                <th class="text-end">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Juan Pérez</td>
+                                <td>Diezmo</td>
+                                <td>$5000</td>
+                                <td>1/10/2025</td>
+                                <td>Transferencia</td>
+                                <td>Diezmo mensual</td>
+                                <td class="text-end">
+                                    <button class="btn btn-outline-secondary btn-sm"><i
+                                            class="bi bi-pencil"></i></button>
+                                    <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>María González</td>
+                                <td>Ofrenda</td>
+                                <td>$3000</td>
+                                <td>2/10/2025</td>
+                                <td>Efectivo</td>
+                                <td>Ofrenda especial</td>
+                                <td class="text-end">
+                                    <button class="btn btn-outline-secondary btn-sm"><i
+                                            class="bi bi-pencil"></i></button>
+                                    <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Carlos Rodríguez</td>
+                                <td>Proyecto</td>
+                                <td>$10.000</td>
+                                <td>2/10/2025</td>
+                                <td>Cheque</td>
+                                <td>Para construcción</td>
+                                <td class="text-end">
+                                    <button class="btn btn-outline-secondary btn-sm"><i
+                                            class="bi bi-pencil"></i></button>
+                                    <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ana Martínez</td>
+                                <td>Diezmo</td>
+                                <td>$2500</td>
+                                <td>3/10/2025</td>
+                                <td>Transferencia</td>
+                                <td>-</td>
+                                <td class="text-end">
+                                    <button class="btn btn-outline-secondary btn-sm"><i
+                                            class="bi bi-pencil"></i></button>
+                                    <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pedro López</td>
+                                <td>Ofrenda</td>
+                                <td>$1500</td>
+                                <td>3/10/2025</td>
+                                <td>Efectivo</td>
+                                <td>Ofrenda dominical</td>
+                                <td class="text-end">
+                                    <button class="btn btn-outline-secondary btn-sm"><i
+                                            class="bi bi-pencil"></i></button>
+                                    <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
