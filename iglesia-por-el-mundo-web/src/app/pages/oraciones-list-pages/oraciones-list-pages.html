@@ -1,1 +1,157 @@
-<p>oraciones-list-pages works!</p>
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Oraciones Diarias - Panel</title>
+    <!-- Bootstrap 5 CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <main class="container py-4">
+
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-start mb-4">
+            <div>
+                <h3 class="mb-1">Oraciones Diarias</h3>
+                <div class="text-muted">Administra las oraciones para cada día</div>
+            </div>
+            <div>
+                <button class="btn btn-primary rounded-pill">
+                    <span class="me-2">+</span> Nueva Oración
+                </button>
+            </div>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="row g-3 mb-4">
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card shadow-sm rounded-3 h-100">
+                    <div class="card-body">
+                        <small class="text-muted">Publicadas</small>
+                        <div class="h2 fw-bold mt-2">2</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card shadow-sm rounded-3 h-100">
+                    <div class="card-body">
+                        <small class="text-muted">Programadas</small>
+                        <div class="h2 fw-bold mt-2">2</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card shadow-sm rounded-3 h-100">
+                    <div class="card-body">
+                        <small class="text-muted">Total Oraciones</small>
+                        <div class="h2 fw-bold mt-2">5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buscador y listado -->
+        <div class="card shadow-sm rounded-3 mb-5">
+            <div class="card-body">
+
+                <!-- Buscador -->
+                <div class="mb-4">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-0">🔍</span>
+                        <input type="text" class="form-control" placeholder="Buscar por título, categoría o autor...">
+                    </div>
+                </div>
+
+                <!-- Título sección -->
+                <h6 class="mb-3">Título</h6>
+
+                <!-- Lista de oraciones (simula filas separadas) -->
+                <div class="list-group list-group-flush">
+                    <div class="list-group-item py-3">
+                        <div class="d-flex w-100 justify-content-between">
+                            <div class="fw-semibold">Oración de la Mañana</div>
+                            <div class="text-muted small">Publicado</div>
+                        </div>
+                        <p class="mb-2 text-muted small">
+                            Señor, al comenzar este nuevo día te agradezco por la vida, por tu amor incondicional y por
+                            todas las bendiciones...
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-sm btn-outline-primary me-2">Ver más</button>
+                            <div class="text-muted small">Autor • Categoría</div>
+                        </div>
+                    </div>
+
+                    <div class="list-group-item py-3">
+                        <div class="d-flex w-100 justify-content-between">
+                            <div class="fw-semibold">Oración por la Familia</div>
+                            <div class="text-muted small">Programada</div>
+                        </div>
+                        <p class="mb-2 text-muted small">
+                            Padre celestial, te pedimos que bendigas a nuestras familias. Protégelas del mal, fortalece
+                            los lazos de amor...
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-sm btn-outline-primary me-2">Ver más</button>
+                            <div class="text-muted small">Autor • Categoría</div>
+                        </div>
+                    </div>
+
+                    <div class="list-group-item py-3">
+                        <div class="d-flex w-100 justify-content-between">
+                            <div class="fw-semibold">Oración de Gratitud</div>
+                            <div class="text-muted small">Publicado</div>
+                        </div>
+                        <p class="mb-2 text-muted small">
+                            Gracias Señor por este día, por tu misericordia que se renueva cada mañana, por tu fidelidad
+                            y por el regalo de la vida...
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-sm btn-outline-primary me-2">Ver más</button>
+                            <div class="text-muted small">Autor • Categoría</div>
+                        </div>
+                    </div>
+
+                    <div class="list-group-item py-3">
+                        <div class="d-flex w-100 justify-content-between">
+                            <div class="fw-semibold">Oración por la Paz</div>
+                            <div class="text-muted small">Programada</div>
+                        </div>
+                        <p class="mb-2 text-muted small">
+                            Señor de paz, te pedimos que traigas tu paz a nuestros corazones, a nuestras familias y a
+                            nuestra comunidad...
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-sm btn-outline-primary me-2">Ver más</button>
+                            <div class="text-muted small">Autor • Categoría</div>
+                        </div>
+                    </div>
+
+                    <div class="list-group-item py-3">
+                        <div class="d-flex w-100 justify-content-between">
+                            <div class="fw-semibold">Oración de la Noche</div>
+                            <div class="text-muted small">Publicado</div>
+                        </div>
+                        <p class="mb-2 text-muted small">
+                            Padre amado, al finalizar este día te doy gracias por tu protección y provisión. Perdona mis
+                            faltas y ayúdame a descansar...
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-sm btn-outline-primary me-2">Ver más</button>
+                            <div class="text-muted small">Autor • Categoría</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+</html>
