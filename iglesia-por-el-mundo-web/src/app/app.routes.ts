@@ -8,7 +8,7 @@ import { ValoracionesListPages } from './pages/valoraciones-list-pages/valoracio
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: '/citas',
+        redirectTo: '/donaciones',
         pathMatch: 'full'
     },
     {
