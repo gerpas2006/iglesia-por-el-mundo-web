@@ -1,0 +1,74 @@
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Nuevo Evento</h5>
+            <a routerLink="/eventos" type="button" class="btn-close" aria-label="Close"></a>
+        </div>
+        <div class="modal-body">
+            <p class="text-muted">Crea un nuevo evento para la iglesia</p>
+
+            <form>
+                <div class="mb-3">
+                    <label for="nombreEvento" class="form-label fw-bold">Nombre del Evento</label>
+                    <input type="text" class="form-control" id="nombreEvento" placeholder="">
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="fecha" class="form-label fw-bold">Fecha</label>
+                        <input type="date" class="form-control" id="fecha" value="2025-11-13">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="hora" class="form-label fw-bold">Hora</label>
+                        <input type="time" class="form-control" id="hora" value="10:00">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="tipo" class="form-label fw-bold">Tipo</label>
+                        <select class="form-select" id="tipo">
+                            <option selected>Culto</option>
+                            <option>Reunión</option>
+                            <option>Conferencia</option>
+                            <option>Otro</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="asistentes" class="form-label fw-bold">Asistentes Esperados</label>
+                        <input type="number" class="form-control" id="asistentes" value="0" min="0">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="ubicacion" class="form-label fw-bold">Ubicación</label>
+                    <input type="text" class="form-control" id="ubicacion" placeholder="">
+                </div>
+
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label fw-bold">Descripción</label>
+                    <textarea class="form-control" id="descripcion" rows="3"
+                        placeholder="Descripción del evento..."></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="estado" class="form-label fw-bold">Estado</label>
+                    <select class="form-select" id="estado">
+                        <option selected>Programado</option>
+                        <option>En curso</option>
+                        <option>Finalizado</option>
+                        <option>Cancelado</option>
+                    </select>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <a routerLink="/eventos" type="button" class="btn btn-secondary me-2">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Crear Evento</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
