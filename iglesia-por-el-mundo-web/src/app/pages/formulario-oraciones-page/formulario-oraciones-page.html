@@ -7,52 +7,72 @@
         <div class="modal-body">
             <p class="text-muted">Crea una nueva oración para el día</p>
 
-            <form>
+            <form [formGroup]="registroOraciones">
                 <div class="mb-3">
                     <label for="titulo" class="form-label fw-bold">Título</label>
-                    <input type="text" class="form-control" id="titulo" placeholder="Ej: Oración de la Mañana">
+                    <input type="text" class="form-control" id="titulo" formControlName="nombreOracion" placeholder="Ej: Oración de la Mañana">
+                    @if (registroOraciones.get('nombreOracion')?.invalid && registroOraciones.get('nombreOracion')?.touched) {
+                        <div class="text-danger small mt-1">El título es requerido</div>
+                    }
                 </div>
 
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="fecha" class="form-label fw-bold">Fecha</label>
-                        <input type="date" class="form-control" id="fecha" value="2025-11-13">
+                        <input type="date" class="form-control" id="fecha" formControlName="fechaOracion">
+                        @if (registroOraciones.get('fechaOracion')?.invalid && registroOraciones.get('fechaOracion')?.touched) {
+                            <div class="text-danger small mt-1">La fecha es requerida</div>
+                        }
                     </div>
                     <div class="col-md-6">
                         <label for="categoria" class="form-label fw-bold">Categoría</label>
-                        <select class="form-select" id="categoria">
-                            <option selected>Mañana</option>
-                            <option>Tarde</option>
-                            <option>Noche</option>
-                            <option>General</option>
+                        <select class="form-select" id="categoria" formControlName="categoriaOracion">
+                            <option value="">Seleccionar...</option>
+                            <option value="Mañana">Mañana</option>
+                            <option value="Tarde">Tarde</option>
+                            <option value="Noche">Noche</option>
+                            <option value="General">General</option>
                         </select>
+                        @if (registroOraciones.get('categoriaOracion')?.invalid && registroOraciones.get('categoriaOracion')?.touched) {
+                            <div class="text-danger small mt-1">La categoría es requerida</div>
+                        }
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="autor" class="form-label fw-bold">Autor</label>
-                        <input type="text" class="form-control" id="autor" placeholder="Nombre del autor">
+                        <input type="text" class="form-control" id="autor" formControlName="autorOracion" placeholder="Nombre del autor">
+                        @if (registroOraciones.get('autorOracion')?.invalid && registroOraciones.get('autorOracion')?.touched) {
+                            <div class="text-danger small mt-1">El autor es requerido</div>
+                        }
                     </div>
                     <div class="col-md-6">
                         <label for="estado" class="form-label fw-bold">Estado</label>
-                        <select class="form-select" id="estado">
-                            <option selected>Borrador</option>
-                            <option>Publicado</option>
-                            <option>Archivado</option>
+                        <select class="form-select" id="estado" formControlName="estadoOracion">
+                            <option value="">Seleccionar...</option>
+                            <option value="Borrador">Borrador</option>
+                            <option value="Publicado">Publicado</option>
+                            <option value="Archivado">Archivado</option>
                         </select>
+                        @if (registroOraciones.get('estadoOracion')?.invalid && registroOraciones.get('estadoOracion')?.touched) {
+                            <div class="text-danger small mt-1">El estado es requerido</div>
+                        }
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="contenido" class="form-label fw-bold">Contenido de la Oración</label>
-                    <textarea class="form-control" id="contenido" rows="4"
+                    <textarea class="form-control" id="contenido" rows="4" formControlName="contenidoOracion"
                         placeholder="Escribe el contenido de la oración aquí..."></textarea>
+                    @if (registroOraciones.get('contenidoOracion')?.invalid && registroOraciones.get('contenidoOracion')?.touched) {
+                        <div class="text-danger small mt-1">El contenido es requerido (mínimo 15 caracteres, máximo 250)</div>
+                    }
                 </div>
 
                 <div class="d-flex justify-content-end">
                     <button routerLink="/oraciones" type="button" class="btn btn-secondary me-2">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Crear Oración</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="registroOraciones.invalid">Crear Oración</button>
                 </div>
             </form>
         </div>
