@@ -12,7 +12,7 @@ import { FormularioOracionesPage } from './pages/formulario-oraciones-page/formu
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: '/donaciones',
+        redirectTo: '/login',
         pathMatch: 'full'
     },
     {
@@ -38,8 +38,7 @@ export const routes: Routes = [
     {
         path: 'login',
         component: LoginPages
-    }
-    ,
+    },
     {
         path: 'registro',
         component: RegistroPages
