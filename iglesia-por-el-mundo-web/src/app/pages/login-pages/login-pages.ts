@@ -11,26 +11,32 @@ import { Usuario } from '../../dto/usuario.dto';
   styleUrl: './login-pages.css',
 })
 export class LoginPages {
-  
-  constructor(private servicioLogin:LoginService,private route:Router){}
 
-  logiForm = new FormGroup ({
-    email : new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]),
-    contrasenea : new FormControl('',[Validators.required, Validators.minLength(8), Validators.maxLength(20)])
+  constructor(private servicioLogin: LoginService, private route: Router) { }
+
+  logiForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]),
+    contrasenea: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(20)])
   })
 
-  loginUsuario(){
+  loginUsuario() {
     const loginUsuario = new Usuario(
       this.logiForm.get('email')?.value!,
       this.logiForm.get('contrasenea')?.value!
     )
-    this.servicioLogin.loginUsuario(loginUsuario).subscribe(resp =>{
+    this.servicioLogin.loginUsuario(loginUsuario).subscribe(resp => {
       const token = resp.token
-      localStorage.setItem('token',token);
-      this.route.navigate(['citas'])
+      localStorage.setItem('token', token);
+      if (resp.user.role != 'admin') {
+        alert("Tu puta madre no eres admin")
+      } else {
+        this.route.navigate(['citas'])
+      }
     }, error => {
       alert('El correo no esta registrado')
-    })
+    }
+    )
+
   }
 
 }
