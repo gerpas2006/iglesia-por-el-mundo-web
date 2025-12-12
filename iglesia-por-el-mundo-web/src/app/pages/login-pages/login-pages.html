@@ -66,15 +66,14 @@
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo Electrónico</label>
                         <div class="input-group">
-                            <span class="input-group-text bg-white"><i class="bi bi-envelope"></i></span>
-                            <input id="email" type="email" class="form-control" formControlName="usuario" placeholder="admin@iglesia.com" />
+                            <input id="email" type="email" class="form-control" formControlName="email" placeholder="admin@iglesia.com" />
                         </div>
-                        @if (logiForm.get('usuario')?.invalid && logiForm.get('usuario')?.touched) {
+                        @if (logiForm.get('email')?.invalid && logiForm.get('email')?.touched) {
                             <div class="text-danger small mt-1">
-                                @if (logiForm.get('usuario')?.errors?.['required']) {
+                                @if (logiForm.get('email')?.errors?.['required']) {
                                     El correo electrónico es requerido
                                 }
-                                @if (logiForm.get('usuario')?.errors?.['pattern']) {
+                                @if (logiForm.get('email')?.errors?.['pattern']) {
                                     Ingresa un correo electrónico válido
                                 }
                             </div>
@@ -86,7 +85,6 @@
                         <div class="input-group">
                             <span class="input-group-text bg-white"><i class="bi bi-lock"></i></span>
                             <input id="password" type="password" class="form-control" formControlName="contrasenea" placeholder="••••••••" />
-                            <span class="input-group-text bg-white"><i class="bi bi-eye"></i></span>
                         </div>
                         @if (logiForm.get('contrasenea')?.invalid && logiForm.get('contrasenea')?.touched) {
                             <div class="text-danger small mt-1">
@@ -114,7 +112,7 @@
                     </div>
 
                     <div class="d-grid mb-3">
-                        <button type="submit" class="btn btn-primary btn-lg rounded-pill" [disabled]="logiForm.invalid">Iniciar Sesión</button>
+                        <button type="submit" class="btn btn-primary btn-lg rounded-pill" [disabled]="logiForm.invalid" (click)="loginUsuario()">Iniciar Sesión</button>
                     </div>
 
                     <div class="d-flex align-items-center mb-3">

@@ -58,63 +58,20 @@
                     <p class="text-center text-muted mb-4">Completa el formulario para registrarte en el sistema</p>
 
                     <form [formGroup]="registroForm">
-                        <div class="row g-3 mb-3">
-                            <div class="col-12 col-md-6">
-                                <label for="nombre" class="form-label small fw-semibold">Nombre</label>
-                                <div class="input-group">
-                                    <span class="input-group-text bg-white"><i class="bi bi-person"></i></span>
-                                    <input id="nombre" type="text" class="form-control" formControlName="nombre" placeholder="Juan">
-                                </div>
-                                @if (registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched) {
-                                    <div class="text-danger small mt-1">El nombre es requerido</div>
-                                }
-                            </div>
-
-                            <div class="col-12 col-md-6">
-                                <label for="apellidos" class="form-label small fw-semibold">Apellidos</label>
-                                <div class="input-group">
-                                    <span class="input-group-text bg-white"><i class="bi bi-person"></i></span>
-                                    <input id="apellidos" type="text" class="form-control" formControlName="apellido" placeholder="Pérez">
-                                </div>
-                                @if (registroForm.get('apellido')?.invalid && registroForm.get('apellido')?.touched) {
-                                    <div class="text-danger small mt-1">El apellido es requerido</div>
-                                }
-                            </div>
-                        </div>
-
                         <div class="mb-3">
-                            <label for="usuario" class="form-label small fw-semibold">Nombre de Usuario</label>
+                            <label for="nombre" class="form-label small fw-semibold">Nombre</label>
                             <div class="input-group">
-                                <span class="input-group-text bg-white"><i class="bi bi-at"></i></span>
-                                <input id="usuario" type="text" class="form-control" formControlName="nombreUsuario" placeholder="juanperez">
+                                <span class="input-group-text bg-white"><i class="bi bi-person"></i></span>
+                                <input id="nombre" type="text" class="form-control" formControlName="nombre" placeholder="Juan Pérez">
                             </div>
-                            @if (registroForm.get('nombreUsuario')?.invalid && registroForm.get('nombreUsuario')?.touched) {
-                                <div class="text-danger small mt-1">El nombre de usuario es requerido</div>
-                            }
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="telefono" class="form-label small fw-semibold">Teléfono</label>
-                            <div class="input-group">
-                                <span class="input-group-text bg-white"><i class="bi bi-telephone"></i></span>
-                                <input id="telefono" type="tel" class="form-control" formControlName="telefonoUsuario" placeholder="1234567890">
-                            </div>
-                            @if (registroForm.get('telefonoUsuario')?.invalid && registroForm.get('telefonoUsuario')?.touched) {
-                                <div class="text-danger small mt-1">
-                                    @if (registroForm.get('telefonoUsuario')?.errors?.['required']) {
-                                        El teléfono es requerido
-                                    }
-                                    @if (registroForm.get('telefonoUsuario')?.errors?.['pattern']) {
-                                        Debe ser un número de 10 dígitos
-                                    }
-                                </div>
+                            @if (registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched) {
+                                <div class="text-danger small mt-1">El nombre es requerido</div>
                             }
                         </div>
 
                         <div class="mb-3">
                             <label for="email" class="form-label small fw-semibold">Correo Electrónico</label>
                             <div class="input-group">
-                                <span class="input-group-text bg-white"><i class="bi bi-envelope"></i></span>
                                 <input id="email" type="email" class="form-control" formControlName="emailUsuario" placeholder="admin@iglesia.com">
                             </div>
                             @if (registroForm.get('emailUsuario')?.invalid && registroForm.get('emailUsuario')?.touched) {
@@ -134,7 +91,6 @@
                             <div class="input-group">
                                 <span class="input-group-text bg-white"><i class="bi bi-lock"></i></span>
                                 <input id="password" type="password" class="form-control" formControlName="contrasenea" placeholder="••••••••">
-                                <span class="input-group-text bg-white"><i class="bi bi-eye"></i></span>
                             </div>
                             @if (registroForm.get('contrasenea')?.invalid && registroForm.get('contrasenea')?.touched) {
                                 <div class="text-danger small mt-1">
@@ -156,7 +112,6 @@
                             <div class="input-group">
                                 <span class="input-group-text bg-white"><i class="bi bi-lock"></i></span>
                                 <input id="password2" type="password" class="form-control" formControlName="confirmarContrasenea" placeholder="••••••••">
-                                <span class="input-group-text bg-white"><i class="bi bi-eye"></i></span>
                             </div>
                             @if (registroForm.get('confirmarContrasenea')?.invalid && registroForm.get('confirmarContrasenea')?.touched) {
                                 <div class="text-danger small mt-1">
@@ -189,7 +144,7 @@
                         </div>
 
                         <div class="d-grid mb-3">
-                            <button type="submit" class="btn btn-primary btn-lg rounded-pill" [disabled]="registroForm.invalid || registroForm.get('contrasenea')?.value !== registroForm.get('confirmarContrasenea')?.value">Crear Cuenta</button>
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill" [disabled]="registroForm.invalid || registroForm.get('contrasenea')?.value !== registroForm.get('confirmarContrasenea')?.value" (click)="crearUsuario()">Crear Cuenta</button>
                         </div>
 
                         <div class="d-flex align-items-center mb-3">

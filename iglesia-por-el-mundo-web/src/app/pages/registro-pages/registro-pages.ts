@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
+import { LoginService } from '../../service/login.service';
+import { RegistroUsuario } from '../../dto/registro.dto';
+import { errorContext } from 'rxjs/internal/util/errorContext';
 
 @Component({
   selector: 'app-registro-pages',
@@ -10,14 +13,31 @@ import { RouterLink } from "@angular/router";
 })
 export class RegistroPages {
 
+  constructor(private serviceRegistro:LoginService, private route:Router){}
+
   registroForm = new FormGroup({
     nombre : new FormControl('',Validators.required),
-    apellido : new FormControl('',Validators.required),
     contrasenea : new FormControl('',[Validators.required, Validators.minLength(8), Validators.maxLength(20)]),
-    nombreUsuario : new FormControl('',Validators.required),
     confirmarContrasenea : new FormControl('',[Validators.required, Validators.minLength(8), Validators.maxLength(20)]),
     emailUsuario : new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]),
-    telefonoUsuario : new FormControl('',[Validators.required, Validators.pattern(/^[0-9]{10}$/)])
   })
+
+  crearUsuario(){
+      const nuevoUsuario = new RegistroUsuario(
+        this.registroForm.get('nombre')?.value!,
+        this.registroForm.get('emailUsuario')?.value!,
+        this.registroForm.get('contrasenea')?.value!,
+        this.registroForm.get('confirmarContrasenea')?.value!,
+      )
+      this.serviceRegistro.crearUsuario(nuevoUsuario).subscribe(resp =>{
+        const token = resp.token;
+        localStorage.setItem('token', token);
+        this.route.navigate(['citas'])
+      },
+    error=>{
+      alert('El correo ya esta registrado')
+    })
+  }
+
 
 }
