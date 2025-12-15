@@ -32,7 +32,7 @@ export class RegistroPages {
       this.serviceRegistro.crearUsuario(nuevoUsuario).subscribe(resp =>{
         const token = resp.token;
         localStorage.setItem('token', token);
-        this.route.navigate(['citas'])
+        this.route.navigate(['login'])
       },
     error=>{
       alert('El correo ya esta registrado')
