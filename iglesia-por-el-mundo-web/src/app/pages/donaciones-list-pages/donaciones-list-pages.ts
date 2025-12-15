@@ -9,29 +9,29 @@ import { left } from '@popperjs/core';
   templateUrl: './donaciones-list-pages.html',
   styleUrl: './donaciones-list-pages.css',
 })
-export class DonacionesListPages implements OnInit{
+export class DonacionesListPages implements OnInit {
 
-listaDonaciones : Donacion[]=[]
+  listaDonaciones: Donacion[] = []
 
-  constructor(private serviceDonaciones:DonacionesService){}
+  constructor(private serviceDonaciones: DonacionesService) { }
 
   ngOnInit(): void {
     this.getDonaciones();
   }
 
-  getDonaciones():void{
-    this.serviceDonaciones.getDonaciones().subscribe(resp =>{
+  getDonaciones(): void {
+    this.serviceDonaciones.getDonaciones().subscribe(resp => {
       this.listaDonaciones = resp;
     })
   }
 
-  removeDonaciones(id: number):void{
-    this.serviceDonaciones.removeDonacion(id).subscribe(resp =>{
+  removeDonaciones(id: number): void {
+    this.serviceDonaciones.removeDonacion(id).subscribe(resp => {
       alert('Eliminado correctamente')
     })
   }
 
-  calcularMedia(){
+  calcularMedia() {
     let suma: number = 0;
     this.listaDonaciones.forEach(s => {
       suma += s.donacion
@@ -39,15 +39,19 @@ listaDonaciones : Donacion[]=[]
     return suma / this.listaDonaciones.length;
   }
 
-  calcularSuma(){
+  calcularSuma() {
     let suma = 0;
-    this.listaDonaciones.forEach(d => {
-      suma+=d.donacion
-    })
-    return suma
+    if (this.listaDonaciones.length == 0) {
+      suma = 0;
+    } else {
+      this.listaDonaciones.forEach(d => {
+        suma += d.donacion
+      })
+    }
+    return suma;
   }
 
-  buscarDonacion(nombre:string){
+  buscarDonacion(nombre: string) {
     return this.listaDonaciones.filter(d => d.nombre_donante.toLowerCase() == nombre.toLowerCase())
   }
 

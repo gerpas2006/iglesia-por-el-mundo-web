@@ -33,6 +33,7 @@
                     <div class="card-body">
                         <h6 class="text-secondary">Promedio</h6>
                         <h3 class="fw-bold">{{calcularMedia()}} €</h3>
+                        
                     </div>
                 </div>
             </div>
@@ -45,7 +46,8 @@
                     <span class="input-group-text bg-transparent border-end-0">
                         <i class="bi bi-search text-secondary"></i>
                     </span>
-                    <input #searchInput (input)="0" type="text" class="form-control border-start-0" placeholder="Buscar por nombre o tipo...">
+                    <input #searchInput (input)="0" type="text" class="form-control border-start-0"
+                        placeholder="Buscar por nombre o tipo...">
                 </div>
 
                 <div class="table-responsive">
@@ -62,7 +64,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for (donacion of searchInput.value ? buscarDonacion(searchInput.value) : listaDonaciones; track donacion.id) {
+                            @for (donacion of searchInput.value ? buscarDonacion(searchInput.value) : listaDonaciones;
+                            track donacion.id) {
                             <tr>
                                 <td>{{ donacion.nombre_donante }}</td>
                                 <td>{{ donacion.tipo_donacion_id }}</td>
@@ -71,7 +74,9 @@
                                 <td>{{ donacion.metodo_pago_id }}</td>
                                 <td>{{ donacion.mensaje }}</td>
                                 <td class="text-end">
-                                    <button onclick="alert('¿Seguro que quieres eliminar la donacion?')" class="btn btn-outline-danger btn-sm" (click)="removeDonaciones(donacion.id)"><i class="bi bi-trash"></i></button>
+                                    <button onclick="alert('¿Seguro que quieres eliminar la donacion?')"
+                                        class="btn btn-outline-danger btn-sm" (click)="removeDonaciones(donacion.id)"><i
+                                            class="bi bi-trash"></i></button>
                                 </td>
                             </tr>
                             } @empty {
