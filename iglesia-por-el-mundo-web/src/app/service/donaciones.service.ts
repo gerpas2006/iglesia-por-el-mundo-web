@@ -15,5 +15,9 @@ export class DonacionesService {
   getDonaciones(): Observable<DonacionResponse>{
     return this.http.get<DonacionResponse>(`${this.URL_BASE}/donaciones`)
   }
+
+  removeDonacion(id:number):Observable<void>{
+    return this.http.delete<void>(`${this.URL_BASE}/donaciones/${id}`)
+  }
   
 }

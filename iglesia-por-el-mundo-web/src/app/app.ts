@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { Menu } from "./layouts/menu/menu";
 
 @Component({
@@ -10,4 +10,11 @@ import { Menu } from "./layouts/menu/menu";
 })
 export class App {
   protected readonly title = signal('iglesia-por-el-mundo-web');
+
+  constructor(private router: Router) {}
+
+  isAuthRoute(): boolean {
+    const authRoutes = ['/login', '/registro'];
+    return authRoutes.includes(this.router.url);
+  }
 }
