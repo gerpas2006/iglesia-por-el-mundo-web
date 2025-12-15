@@ -4,6 +4,7 @@ export interface Evento {
     fecha_evento: string;
     ubicacion: string;
     descripcion_evento: string;
+    estado : boolean
     user_id: number;
     tipo_evento_id: number;
     created_at: string;
