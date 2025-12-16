@@ -3,7 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterLink } from "@angular/router";
 import { LoginService } from '../../service/login.service';
 import { RegistroUsuario } from '../../dto/registro.dto';
-import { errorContext } from 'rxjs/internal/util/errorContext';
+
 
 @Component({
   selector: 'app-registro-pages',

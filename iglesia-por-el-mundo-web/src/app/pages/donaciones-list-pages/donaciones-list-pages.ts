@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { DonacionesService } from '../../service/donaciones.service';
 import { Donacion } from '../../interface/donaciones.interface';
 import { left } from '@popperjs/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-donaciones-list-pages',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './donaciones-list-pages.html',
   styleUrl: './donaciones-list-pages.css',
 })

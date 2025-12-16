@@ -1,28 +1,18 @@
 <div class="container">
     <h2>Formulario de Tipo de Donación</h2>
-    <form>
+    <form [formGroup]="registroForm" (ngSubmit)="crearTipoDonacion()">
         <div class="form-group">
             <label for="nombre_donacion">Nombre de Donación</label>
-            <input type="text" class="form-control" id="nombre_donacion" name="nombre_donacion" required>
+            <input type="text" class="form-control" id="nombre_donacion" formControlName="nombre_donacion" required>
         </div>
 
         <div class="form-group">
             <label for="descripcion_donacion">Descripción de Donación</label>
-            <textarea class="form-control" id="descripcion_donacion" name="descripcion_donacion" rows="4"
+            <textarea class="form-control" id="descripcion_donacion" formControlName="descripcion_donacion" rows="4"
                 required></textarea>
         </div>
 
-        <div class="form-group">
-            <label for="created_at">Fecha de Creación</label>
-            <input type="datetime-local" class="form-control" id="created_at" name="created_at" readonly>
-        </div>
-
-        <div class="form-group">
-            <label for="updated_at">Fecha de Actualización</label>
-            <input type="datetime-local" class="form-control" id="updated_at" name="updated_at" readonly>
-        </div>
-
-        <button type="submit"  class="btn btn-primary">Guardar</button>
-        <button type="submit" routerLink="/donaciones" class="btn btn-secondary">Cancelar</button>
+        <button type="submit" [disabled]="!registroForm.valid" class="btn btn-primary">Guardar</button>
+        <button type="button" routerLink="/donaciones" class="btn btn-secondary">Cancelar</button>
     </form>
 </div>
