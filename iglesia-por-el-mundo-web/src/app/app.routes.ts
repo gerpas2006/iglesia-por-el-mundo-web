@@ -8,6 +8,9 @@ import { LoginPages } from './pages/login-pages/login-pages';
 import { RegistroPages } from './pages/registro-pages/registro-pages';
 import { FormulariEventosPage } from './pages/formulari-eventos-page/formulari-eventos-page';
 import { FormularioOracionesPage } from './pages/formulario-oraciones-page/formulario-oraciones-page';
+import { FomularioTipoEvento } from './pages/fomulario-tipo-evento/fomulario-tipo-evento';
+import { FomularioTipoDonacion } from './pages/fomulario-tipo-donacion/fomulario-tipo-donacion';
+import { FomularioTipoOracion } from './pages/fomulario-tipo-oracion/fomulario-tipo-oracion';
 
 export const routes: Routes = [
     {
@@ -50,6 +53,18 @@ export const routes: Routes = [
     {
         path: 'formularioOraciones',
         component: FormularioOracionesPage
+    },
+    {
+        path: 'formularioTipoEvento',
+        component: FomularioTipoEvento
+    },
+    {
+        path: 'formularioTipoDonacion',
+        component: FomularioTipoDonacion
+    },
+    {
+        path: 'formularioTipoOracion',
+        component: FomularioTipoOracion
     }
 
 

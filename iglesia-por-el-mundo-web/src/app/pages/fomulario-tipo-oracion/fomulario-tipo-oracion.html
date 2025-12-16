@@ -1,0 +1,37 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h3>Formulario de Tipo de Oración</h3>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <label for="nombreOracion" class="form-label">Nombre de Oración</label>
+                    <input type="text" class="form-control" id="nombreOracion" name="nombre_oracion"
+                        placeholder="Ingrese el nombre de la oración" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="descripcionOracion" class="form-label">Descripción de Oración</label>
+                    <textarea class="form-control" id="descripcionOracion" name="descripcion_oracion" rows="4"
+                        placeholder="Ingrese la descripción de la oración" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="createdAt" class="form-label">Fecha de Creación</label>
+                    <input type="datetime-local" class="form-control" id="createdAt" name="created_at" readonly>
+                </div>
+
+                <div class="mb-3">
+                    <label for="updatedAt" class="form-label">Fecha de Actualización</label>
+                    <input type="datetime-local" class="form-control" id="updatedAt" name="updated_at" readonly>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="button" routerLink="/oraciones" class="btn btn-secondary me-md-2">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

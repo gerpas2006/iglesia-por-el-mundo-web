@@ -1,0 +1,46 @@
+<div class="container">
+    <h2>Crear Nuevo Tipo de Evento</h2>
+    <form>
+        <div class="form-group">
+            <label for="nombre_evento">Nombre del Evento</label>
+            <input type="text" class="form-control" id="nombre_evento" name="nombre_evento" required>
+            <div class="text-danger" style="display: none;">
+                El nombre del evento es requerido
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="descripcion_evento">Descripción del Evento</label>
+            <textarea class="form-control" id="descripcion_evento" name="descripcion_evento" rows="4"
+                required></textarea>
+            <div class="text-danger" style="display: none;">
+                La descripción del evento es requerida
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="created_at">Fecha de Creación</label>
+            <input type="datetime-local" class="form-control" id="created_at" name="created_at" required>
+            <div class="text-danger" style="display: none;">
+                La fecha de creación es requerida
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="updated_at">Fecha de Actualización</label>
+            <input type="datetime-local" class="form-control" id="updated_at" name="updated_at" required>
+            <div class="text-danger" style="display: none;">
+                La fecha de actualización es requerida
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                Guardar
+            </button>
+            <button type="button" routerLink="/eventos" class="btn btn-secondary">
+                Cancelar
+            </button>
+        </div>
+    </form>
+</div>
