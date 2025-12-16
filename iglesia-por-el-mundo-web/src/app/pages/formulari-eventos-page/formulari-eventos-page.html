@@ -7,91 +7,65 @@
         <div class="modal-body">
             <p class="text-muted">Crea un nuevo evento para la iglesia</p>
 
-            <form [formGroup]="registroEventos">
+            <form [formGroup]="registroEventos" (ngSubmit)="crearEvento()">
                 <div class="mb-3">
                     <label for="nombreEvento" class="form-label fw-bold">Nombre del Evento</label>
-                    <input type="text" class="form-control" id="nombreEvento" formControlName="nombreEvento"
+                    <input type="text" class="form-control" id="nombreEvento" formControlName="nombre_evento"
                         placeholder="">
-                    @if (registroEventos.get('nombreEvento')?.invalid && registroEventos.get('nombreEvento')?.touched) {
+                    @if (registroEventos.get('nombre_evento')?.invalid && registroEventos.get('nombre_evento')?.touched) {
                     <div class="text-danger small mt-1">El nombre del evento es requerido</div>
                     }
                 </div>
 
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="fecha" class="form-label fw-bold">Fecha</label>
-                        <input type="date" class="form-control" id="fecha" formControlName="fechaEvento">
-                        @if (registroEventos.get('fechaEvento')?.invalid && registroEventos.get('fechaEvento')?.touched)
-                        {
-                        <div class="text-danger small mt-1">La fecha es requerida</div>
-                        }
-                    </div>
-                    <div class="col-md-6">
-                        <label for="hora" class="form-label fw-bold">Hora</label>
-                        <input type="time" class="form-control" id="hora" formControlName="horaEvento">
-                        @if (registroEventos.get('horaEvento')?.invalid && registroEventos.get('horaEvento')?.touched) {
-                        <div class="text-danger small mt-1">La hora es requerida</div>
-                        }
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="tipo" class="form-label fw-bold">Tipo</label>
-                        <select class="form-select" id="tipo" formControlName="tipoEvento">
-                            <option value="">Seleccionar...</option>
-                            <option value="Culto">Culto</option>
-                            <option value="Reunión">Reunión</option>
-                            <option value="Conferencia">Conferencia</option>
-                            <option value="Otro">Otro</option>
-                        </select>
-                        @if (registroEventos.get('tipoEvento')?.invalid && registroEventos.get('tipoEvento')?.touched) {
-                        <div class="text-danger small mt-1">El tipo de evento es requerido</div>
-                        }
-                    </div>
-                    <div class="col-md-6">
-                        <label for="asistentes" class="form-label fw-bold">Asistentes Esperados</label>
-                        <input type="number" class="form-control" id="asistentes" formControlName="asistentesEsperados"
-                            min="0">
-                        @if (registroEventos.get('asistentesEsperados')?.invalid &&
-                        registroEventos.get('asistentesEsperados')?.touched) {
-                        <div class="text-danger small mt-1">El número de asistentes es requerido</div>
-                        }
-                    </div>
+                <div class="mb-3">
+                    <label for="fecha" class="form-label fw-bold">Fecha</label>
+                    <input type="datetime-local" class="form-control" id="fecha" formControlName="fecha_evento">
+                    @if (registroEventos.get('fecha_evento')?.invalid && registroEventos.get('fecha_evento')?.touched)
+                    {
+                    <div class="text-danger small mt-1">La fecha es requerida</div>
+                    }
                 </div>
 
                 <div class="mb-3">
                     <label for="ubicacion" class="form-label fw-bold">Ubicación</label>
-                    <input type="text" class="form-control" id="ubicacion" formControlName="ubicacionEvento"
+                    <input type="text" class="form-control" id="ubicacion" formControlName="ubicacion"
                         placeholder="">
-                    @if (registroEventos.get('ubicacionEvento')?.invalid &&
-                    registroEventos.get('ubicacionEvento')?.touched) {
+                    @if (registroEventos.get('ubicacion')?.invalid &&
+                    registroEventos.get('ubicacion')?.touched) {
                     <div class="text-danger small mt-1">La ubicación es requerida</div>
                     }
                 </div>
 
                 <div class="mb-3">
                     <label for="descripcion" class="form-label fw-bold">Descripción</label>
-                    <textarea class="form-control" id="descripcion" rows="3" formControlName="descripcionEvento"
+                    <textarea class="form-control" id="descripcion" rows="3" formControlName="descripcion_evento"
                         placeholder="Descripción del evento..."></textarea>
-                    @if (registroEventos.get('descripcionEvento')?.invalid &&
-                    registroEventos.get('descripcionEvento')?.touched) {
-                    <div class="text-danger small mt-1">La descripción es requerida (mínimo 12 caracteres, máximo 250)
-                    </div>
+                    @if (registroEventos.get('descripcion_evento')?.invalid &&
+                    registroEventos.get('descripcion_evento')?.touched) {
+                    <div class="text-danger small mt-1">La descripción es requerida</div>
                     }
                 </div>
 
                 <div class="mb-3">
                     <label for="estado" class="form-label fw-bold">Estado</label>
-                    <select class="form-select" id="estado" formControlName="estadoEvento">
-                        <option value="">Seleccionar...</option>
-                        <option value="Programado">Programado</option>
-                        <option value="En curso">En curso</option>
-                        <option value="Finalizado">Finalizado</option>
-                        <option value="Cancelado">Cancelado</option>
+                    <select class="form-select" id="estado" formControlName="estado">
+                        <option [ngValue]="true">Activo</option>
+                        <option [ngValue]="false">Inactivo</option>
                     </select>
-                    @if (registroEventos.get('estadoEvento')?.invalid && registroEventos.get('estadoEvento')?.touched) {
+                    @if (registroEventos.get('estado')?.invalid && registroEventos.get('estado')?.touched) {
                     <div class="text-danger small mt-1">El estado es requerido</div>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label for="tipoEventoId" class="form-label fw-bold">Tipo de Evento</label>
+                    <select class="form-select" id="tipoEventoId" formControlName="tipo_evento_id">
+                        <option [value]="0">Seleccionar...</option>
+                        @for (tipo of listaTipoEventos; track tipo.id) {
+                            <option [value]="tipo.id">{{ tipo.nombre_evento }}</option>
+                        }
+                    </select>
+                    @if (registroEventos.get('tipo_evento_id')?.invalid && registroEventos.get('tipo_evento_id')?.touched) {
+                    <div class="text-danger small mt-1">El tipo de evento es requerido</div>
                     }
                 </div>
 
@@ -105,5 +79,3 @@
         </div>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

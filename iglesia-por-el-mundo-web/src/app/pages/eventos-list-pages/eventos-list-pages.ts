@@ -33,7 +33,7 @@ export class EventosListPages {
   }
 
   buscarEvento(nombre:string){
-    return this.listaEventos.filter(e => e.nombre_evento.toLowerCase() == nombre.toLowerCase())
+    return this.listaEventos.filter(e => e.nombre_evento.toLowerCase().includes(nombre.toLowerCase()))
   }
 
   eventosProximos(){

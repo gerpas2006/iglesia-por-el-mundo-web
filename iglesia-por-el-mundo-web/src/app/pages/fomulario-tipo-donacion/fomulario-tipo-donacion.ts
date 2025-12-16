@@ -27,8 +27,8 @@ export class FomularioTipoDonacion {
     this.serviceTipoDonacion.crearTipoDonacion(nuevoTipoDonacion).subscribe(resp => {
       this.route.navigate(['donaciones'])
     },
-      error =>{
-        alert('Ha habido un error intentalo de nuevo')
+      error => {
+        alert("Algo ha salido mal. intentalo de juevo")
       }
     )
   }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { EventosResponse } from '../interface/eventos.interface';
+import { Evento, EventosResponse } from '../interface/eventos.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -20,4 +20,8 @@ export class EventosService {
     return this.http.delete<EventosResponse>(`${this.URL_BASE}/eventos/${id}`)
   }
   
+  crearEvento(evento:Evento): Observable<EventosResponse>{
+    return this.http.post<EventosResponse>(`${this.URL_BASE}/eventos`,evento)
+  }
+
 }
