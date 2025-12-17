@@ -53,7 +53,7 @@ export class DonacionesListPages implements OnInit {
   }
 
   buscarDonacion(nombre: string) {
-    return this.listaDonaciones.filter(d => d.nombre_donante.toLowerCase() == nombre.toLowerCase())
+    return this.listaDonaciones.filter(d => d.nombre_donante.toLowerCase().includes(nombre.toLowerCase()))
   }
 
 

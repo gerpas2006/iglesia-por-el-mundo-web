@@ -73,7 +73,11 @@
                                 <td><i class="bi bi-calendar-event me-1 text-secondary"></i>{{evento.fecha_evento}}<br>
                                 </td>
                                 <td>{{evento.ubicacion}}</td>
-                                <td>{{evento.tipo_evento_id}}</td>
+                                @if (evento.tipo_evento_id==null) {
+                                    <td>No hay ningún tipo evento añadido</td>
+                                }@else {
+                                    <td>{{evento.tipo_evento_id}}</td>
+                                }
                                 @if (evento.estado) {
                                 <td><span class="badge bg-primary">Programado</span></td>
                                 }@else {
