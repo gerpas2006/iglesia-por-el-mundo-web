@@ -59,6 +59,7 @@
                     <table class="table align-middle">
                         <thead class="table-light">
                             <tr>
+                                <th>ID</th>
                                 <th>Donante</th>
                                 <th>Tipo</th>
                                 <th>Donación</th>
@@ -72,11 +73,12 @@
                             @for (donacion of searchInput.value ? buscarDonacion(searchInput.value) : listaDonaciones;
                             track donacion.id) {
                             <tr>
+                                <td>{{ donacion.id }}</td>
                                 <td>{{ donacion.nombre_donante }}</td>
-                                <td>{{ donacion.tipo_donacion_id }}</td>
+                                <td>{{ donacion.tipo_donacion_id}}</td>
                                 <td>{{ donacion.donacion }} €</td>
                                 <td>{{ donacion.fecha_donacion }}</td>
-                                <td>{{ donacion.metodo_pago_id }}</td>
+                                <td>{{ donacion.metodo}}</td>
                                 <td>{{ donacion.mensaje }}</td>
                                 <td class="text-end">
                                     <button onclick="alert('¿Seguro que quieres eliminar la donacion?')"

@@ -28,8 +28,12 @@ export class DonacionesListPages implements OnInit {
 
   removeDonaciones(id: number): void {
     this.serviceDonaciones.removeDonacion(id).subscribe(resp => {
-      alert('Eliminado correctamente')
-    })
+        alert("Eliminado correctamente ")
+    },
+      error =>{
+        alert("Algo ha slido mal, intentalo más tarde")
+      }
+    )
   }
 
   calcularMedia() {
@@ -37,7 +41,7 @@ export class DonacionesListPages implements OnInit {
     this.listaDonaciones.forEach(s => {
       suma += s.donacion
     });
-    return suma / this.listaDonaciones.length;
+    return (suma / this.listaDonaciones.length).toFixed(2);
   }
 
   calcularSuma() {
@@ -49,7 +53,7 @@ export class DonacionesListPages implements OnInit {
         suma += d.donacion
       })
     }
-    return suma;
+    return suma.toFixed(2);
   }
 
   buscarDonacion(nombre: string) {

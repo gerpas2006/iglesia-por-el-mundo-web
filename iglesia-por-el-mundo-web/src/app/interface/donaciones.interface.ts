@@ -5,8 +5,8 @@ export interface Donacion {
     donacion: number;
     mensaje: string;
     fecha_donacion: string;
+    metodo:string;
     user_id: number;
-    metodo_pago_id: number;
     tipo_donacion_id: number;
     created_at: string;
     updated_at: string;

@@ -15,6 +15,9 @@
                 <a routerLink="/formularioEventos" class="btn btn-primary">
                     <i class="bi bi-plus-lg me-1"></i> Nuevo Evento
                 </a>
+                <a routerLink="/tipoEventos" class="btn btn-primary">
+                    Ver Tipos Eventos
+                </a>
             </div>
         </div>
 
@@ -54,6 +57,7 @@
                     <table class="table align-middle">
                         <thead class="table-light">
                             <tr>
+                                <th>ID</th>
                                 <th>Evento</th>
                                 <th>Fecha y Hora</th>
                                 <th>Ubicación</th>
@@ -66,6 +70,7 @@
                             @for (evento of searchInput.value ? buscarEvento(searchInput.value) : listaEventos; track
                             evento.id) {
                             <tr>
+                                <td>{{evento.id}}</td>
                                 <td>
                                     <strong>{{evento.nombre_evento}}</strong><br>
                                     <small class="text-secondary">{{evento.descripcion_evento}}</small>
@@ -74,9 +79,9 @@
                                 </td>
                                 <td>{{evento.ubicacion}}</td>
                                 @if (evento.tipo_evento_id==null) {
-                                    <td>No hay ningún tipo evento añadido</td>
+                                <td>No hay ningún tipo evento añadido</td>
                                 }@else {
-                                    <td>{{evento.tipo_evento_id}}</td>
+                                <td>{{evento.tipo_evento_id}}</td>
                                 }
                                 @if (evento.estado) {
                                 <td><span class="badge bg-primary">Programado</span></td>

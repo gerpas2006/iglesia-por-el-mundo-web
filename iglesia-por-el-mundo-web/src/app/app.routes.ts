@@ -11,6 +11,7 @@ import { FormularioOracionesPage } from './pages/formulario-oraciones-page/formu
 import { FomularioTipoEvento } from './pages/fomulario-tipo-evento/fomulario-tipo-evento';
 import { FomularioTipoDonacion } from './pages/fomulario-tipo-donacion/fomulario-tipo-donacion';
 import { FomularioTipoOracion } from './pages/fomulario-tipo-oracion/fomulario-tipo-oracion';
+import { TipoEventosListPages } from './pages/tipo-eventos-list-pages/tipo-eventos-list-pages';
 
 export const routes: Routes = [
     {
@@ -65,6 +66,10 @@ export const routes: Routes = [
     {
         path: 'formularioTipoOracion',
         component: FomularioTipoOracion
+    },
+    {
+        path: 'tipoEventos',
+        component: TipoEventosListPages
     }
 
 
