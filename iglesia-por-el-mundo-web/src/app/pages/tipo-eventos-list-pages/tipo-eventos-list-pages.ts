@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { TipoEventoService } from '../../service/tipo-evento.service';
 import { TipoEvento } from '../../dto/tipoEvento.dto';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-tipo-eventos-list-pages',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './tipo-eventos-list-pages.html',
   styleUrl: './tipo-eventos-list-pages.css',
 })
