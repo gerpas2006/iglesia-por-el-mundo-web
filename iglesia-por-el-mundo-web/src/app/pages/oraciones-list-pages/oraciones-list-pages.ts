@@ -40,4 +40,24 @@ export class OracionesListPages implements OnInit{
     return this.listaOraciones.filter(o => o.nombre_oracion.toLowerCase().includes(nombre.toLowerCase()))
   }
 
+  eventosPublicados(){
+    let suma =0
+    this.listaOraciones.forEach( o =>{
+      if(o.estado){
+        suma+=1
+      }
+    })
+    return suma
+  }
+
+    eventosProgramados(){
+    let suma =0
+    this.listaOraciones.forEach( o =>{
+      if(!o.estado){
+        suma+=1
+      }
+    })
+    return suma
+  }
+
 }

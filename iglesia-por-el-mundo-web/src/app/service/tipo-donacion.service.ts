@@ -17,4 +17,12 @@ export class TipoDonacionService {
     return this.http.post<TipoDonacionResponse>(`${this.URL_BASE}/tipoDonaciones`,TipoDonacion)
   }
 
+  getTipoDonacion():Observable<TipoDonacionResponse>{
+    return this.http.get<TipoDonacionResponse>(`${this.URL_BASE}/tipoDonaciones`)
+  }
+
+  deleteDonacion(id:number):Observable<TipoDonacionResponse>{
+      return this.http.delete<TipoDonacionResponse>(`${this.URL_BASE}/tipoDonaciones/${id}`)
+  }
+
 }
