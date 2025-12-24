@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OracionResponse } from '../interface/oraciones.interface';
+import { Oracion } from '../dto/oraciones.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,10 @@ export class OracionesService {
 
   deleteOracion(id:number):Observable<OracionResponse>{
     return this.http.delete<OracionResponse>(`${this.URL_BASE}/oraciones/${id}`)
+  }
+
+  createOracion(oracion:Oracion):Observable<OracionResponse>{
+    return this.http.post<OracionResponse>(`${this.URL_BASE}/oraciones`,oracion)
   }
 
 }

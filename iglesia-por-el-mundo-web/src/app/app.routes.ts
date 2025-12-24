@@ -13,6 +13,7 @@ import { FomularioTipoDonacion } from './pages/fomulario-tipo-donacion/fomulario
 import { FomularioTipoOracion } from './pages/fomulario-tipo-oracion/fomulario-tipo-oracion';
 import { TipoEventosListPages } from './pages/tipo-eventos-list-pages/tipo-eventos-list-pages';
 import { TipoDonacionesListPage } from './pages/tipo-donaciones-list-page/tipo-donaciones-list-page';
+import { TipoOracionesListPages } from './pages/tipo-oraciones-list-pages/tipo-oraciones-list-pages';
 
 export const routes: Routes = [
     {
@@ -75,6 +76,10 @@ export const routes: Routes = [
     {
         path: 'tipoDonacion',
         component:TipoDonacionesListPage
+    },
+    {
+        path: 'tipoOracion',
+        component: TipoOracionesListPages
     }
 
 

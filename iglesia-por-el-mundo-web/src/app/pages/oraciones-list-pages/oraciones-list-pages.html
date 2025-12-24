@@ -14,6 +14,9 @@
                 <a routerLink="/formularioOraciones" class="btn btn-primary">
                     <i class="bi bi-plus-lg me-1"></i> Nueva Oración
                 </a>
+                <a routerLink="/tipoOracion" class="btn btn-primary">
+                 Ver Tipos Oraciones
+                </a>
             </div>
         </div>
 
@@ -64,6 +67,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Nombre</th>
+                                <th>Tipo oracion</th>
                                 <th>Autor</th>
                                 <th>Estado</th>
                                 <th style="width: 40%;">Texto Oración</th>
@@ -71,20 +75,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for (oracion of searchInput.value ? buscarOracion(searchInput.value) : listaOraciones; track oracion.id) {
+                            @for (oracion of searchInput.value ? buscarOracion(searchInput.value) : listaOraciones;
+                            track oracion.id) {
                             <tr>
                                 <td>{{oracion.id}}</td>
                                 <td>
                                     <strong>{{oracion.nombre_oracion}}</strong>
                                 </td>
                                 <td>
+                                    @if (oracion.tipo_oracion_id==null) {
+                                        <span>No tiene ningun tipo asociado</span>
+                                    }
+                                    <span>{{oracion.tipo_oracion_id}}</span>
+                                </td>
+                                <td>
                                     <span class="text-secondary">{{oracion.autor || 'Sin autor'}}</span>
                                 </td>
                                 <td>
                                     @if (oracion.estado) {
-                                        <span class="badge bg-success">Publicado</span>
+                                    <span class="badge bg-success">Publicado</span>
                                     } @else {
-                                        <span class="badge bg-warning text-dark">Programada</span>
+                                    <span class="badge bg-warning text-dark">Programada</span>
                                     }
                                 </td>
                                 <td>
