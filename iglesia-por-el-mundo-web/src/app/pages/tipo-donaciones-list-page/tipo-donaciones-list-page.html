@@ -8,6 +8,9 @@
                 <p class="text-secondary mb-0">Organiza y administra todos los tipos de donaciones de la iglesia</p>
             </div>
             <div class="d-flex gap-2">
+                <a routerLink="/formularioTipoDonacion" class="btn btn-primary">
+                    <i class="bi bi-plus-lg me-1"></i> Nuevo Tipo Donación
+                </a>
                 <a routerLink="/donaciones" class="btn btn-primary">
                     Volver a Donaciones
                 </a>
@@ -57,7 +60,8 @@
                                 <td class="text-end">
                                     <button class="btn btn-outline-secondary btn-sm"><i
                                             class="bi bi-pencil"></i></button>
-                                    <button (click)="deleteTipoDonaciones(tipoDonacion.id)" onclick="alert('¿Seguro que quieres eliminar este tipo de evento?')"
+                                    <button (click)="deleteTipoDonaciones(tipoDonacion.id)"
+                                        onclick="alert('¿Seguro que quieres eliminar este tipo de evento?')"
                                         class="btn btn-outline-danger btn-sm">
                                         <i class="bi bi-trash"></i>
                                     </button>
@@ -65,7 +69,8 @@
                             </tr>
                             } @empty {
                             <tr>
-                                <td colspan="4" class="text-center text-secondary">No hay tipos de donaciones registrados
+                                <td colspan="4" class="text-center text-secondary">No hay tipos de donaciones
+                                    registrados
                                 </td>
                             </tr>
                             }

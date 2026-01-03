@@ -25,7 +25,7 @@ export class FomularioTipoDonacion {
       this.registroForm.get('descripcion_donacion')?.value!
     )
     this.serviceTipoDonacion.crearTipoDonacion(nuevoTipoDonacion).subscribe(resp => {
-      this.route.navigate(['donaciones'])
+      this.route.navigate(['tipoDonacion'])
     },
       error => {
         alert("Algo ha salido mal. intentalo de juevo")
