@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { CitasListPages } from './pages/citas-list-pages/citas-list-pages';
+import { CitasListPages } from './pages/Citas/citas-list-pages/citas-list-pages';
 import { EventosListPages } from './pages/eventos-list-pages/eventos-list-pages';
 import { OracionesListPages } from './pages/oraciones-list-pages/oraciones-list-pages';
 import { DonacionesListPages } from './pages/donaciones-list-pages/donaciones-list-pages';
@@ -14,6 +14,8 @@ import { FomularioTipoOracion } from './pages/fomulario-tipo-oracion/fomulario-t
 import { TipoEventosListPages } from './pages/tipo-eventos-list-pages/tipo-eventos-list-pages';
 import { TipoDonacionesListPage } from './pages/tipo-donaciones-list-page/tipo-donaciones-list-page';
 import { TipoOracionesListPages } from './pages/tipo-oraciones-list-pages/tipo-oraciones-list-pages';
+import { TipoCitasListPages } from './pages/Citas/tipo-citas-list-pages/tipo-citas-list-pages';
+import { FormularioTipoCitasPages } from './pages/Citas/formulario-tipo-citas-pages/formulario-tipo-citas-pages';
 
 export const routes: Routes = [
     {
@@ -80,6 +82,14 @@ export const routes: Routes = [
     {
         path: 'tipoOracion',
         component: TipoOracionesListPages
+    },
+    {
+        path: 'tipoCitas',
+        component: TipoCitasListPages
+    },
+    {
+        path: 'formularioTipoCitas',
+        component: FormularioTipoCitasPages
     }
 
 

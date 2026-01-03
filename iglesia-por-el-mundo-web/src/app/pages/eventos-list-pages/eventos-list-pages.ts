@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { EventosService } from '../../service/eventos.service';
 import { Evento } from '../../interface/eventos.interface';
@@ -10,7 +10,7 @@ import { Evento } from '../../interface/eventos.interface';
   templateUrl: './eventos-list-pages.html',
   styleUrl: './eventos-list-pages.css',
 })
-export class EventosListPages {
+export class EventosListPages implements OnInit{
 
   listaEventos: Evento[] = []
 
