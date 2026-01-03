@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Cita, CitaResponse } from '../../../interface/citas.interface';
-import { CitasService } from '../../../service/citas.service';
-import { Route, Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Cita, CitaResponse } from '../../interface/citas.interface';
+import { CitasService } from '../../service/citas.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-citas-list-pages',
-  imports: [RouterLink],
+  imports: [CommonModule, RouterLink],
   templateUrl: './citas-list-pages.html',
   styleUrl: './citas-list-pages.css',
 })
@@ -52,7 +53,7 @@ export class CitasListPages implements OnInit {
     return this.listaCitas.filter(c => c.nombre_solicitante.toLowerCase().includes(nombre.toLowerCase()))
   }
 
-  filtarPorEstado(estado:string){
+  filtrarPorEstado(estado:string){
     return this.listaCitas.filter(c => c.estado.toLowerCase().includes(estado.toLowerCase()))
   }
 
