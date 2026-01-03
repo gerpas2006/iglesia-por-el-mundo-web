@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Cita, CitaResponse } from '../../interface/citas.interface';
 import { CitasService } from '../../service/citas.service';
 import { RouterLink } from '@angular/router';
+import { TipoCitasService } from '../../service/tipo-citas.service';
+import { TipoCita } from '../../interface/tipo-citas.interface';
 
 @Component({
   selector: 'app-citas-list-pages',
@@ -14,11 +16,19 @@ export class CitasListPages implements OnInit {
 
 
   listaCitas: Cita[] = []
+  listaTipoCitas: TipoCita[]=[]
 
-  constructor(private serviceCitas: CitasService) { }
+  constructor(private serviceCitas: CitasService, private serviceTipoCitas:TipoCitasService) { }
 
   ngOnInit(): void {
+    this.getTipoCitas()
     this.getCitas();
+  }
+
+  getTipoCitas():void{
+    this.serviceTipoCitas.getTipoCitas().subscribe(resp =>{
+      this.listaTipoCitas = resp
+    })
   }
 
   getCitas(): void {
@@ -55,6 +65,10 @@ export class CitasListPages implements OnInit {
 
   filtrarPorEstado(estado:string){
     return this.listaCitas.filter(c => c.estado.toLowerCase().includes(estado.toLowerCase()))
+  }
+
+  filtrarPorTipoCita(id:string){
+    return this.listaCitas.filter(c => c.tipo_cita_id.toString() === id)
   }
 
 

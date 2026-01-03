@@ -8,6 +8,9 @@
                 <p class="text-secondary mb-0">Organiza y administra todos los tipos de oraciones de la iglesia</p>
             </div>
             <div class="d-flex gap-2">
+                <a routerLink="/formularioTipoOracion" class="btn btn-primary">
+                    <i class="bi bi-plus-lg me-1"></i> Nuevo Tipo Oración
+                </a>
                 <a routerLink="/oraciones" class="btn btn-primary">
                     Volver a oraciones
                 </a>
@@ -57,7 +60,8 @@
                                 <td class="text-end">
                                     <button class="btn btn-outline-secondary btn-sm"><i
                                             class="bi bi-pencil"></i></button>
-                                    <button (click)="deleteTipoOracion(tipoOracion.id)" onclick="alert('¿Seguro que quieres eliminar este tipo de evento?')"
+                                    <button (click)="deleteTipoOracion(tipoOracion.id)"
+                                        onclick="alert('¿Seguro que quieres eliminar este tipo de evento?')"
                                         class="btn btn-outline-danger btn-sm">
                                         <i class="bi bi-trash"></i>
                                     </button>

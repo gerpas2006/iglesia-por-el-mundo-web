@@ -22,11 +22,11 @@ export class TipoCitasService {
     }
 
     crearTipoCita(tipoCita:TipoCita):Observable<TipoCitaResponse>{
-      return this.http.post<TipoCitaResponse>(`${this.URL_BASE}/TipoCita`,tipoCita)
+      return this.http.post<TipoCitaResponse>(`${this.URL_BASE}/tipoCita`,tipoCita)
     }
 
     editarTipoCita(tipoCita:TipoCita, id:number):Observable<TipoCitaResponse>{
-      return this.http.put<TipoCitaResponse>(`${this.URL_BASE}/TipoCita/${id}`,tipoCita)
+      return this.http.put<TipoCitaResponse>(`${this.URL_BASE}/tipoCita/${id}`,tipoCita)
     }
   
 }

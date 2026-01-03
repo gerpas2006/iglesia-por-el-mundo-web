@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from "@angular/router";
 import { TipoEventoService } from '../../service/tipo-evento.service';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TipoEvento } from '../../dto/tipoEvento.dto';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-fomulario-tipo-evento',
@@ -16,7 +16,7 @@ export class FomularioTipoEvento {
 
   registroForm = new FormGroup({
     nombre_evento: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-    descripcion_evento: new FormControl('', [Validators.required,])
+    descripcion_evento: new FormControl('', [Validators.required, Validators.maxLength(255)])
   })
 
   crearTipoEvento() {
@@ -26,7 +26,7 @@ export class FomularioTipoEvento {
       this.registroForm.get('descripcion_evento')?.value!
     )
     this.serviceTipoEvento.crearTipoEvento(nuevoTipoEvento).subscribe(resp => {
-      this.route.navigate(['eventos'])
+      this.route.navigate(['tipoEventos'])
     },
       error => {
         alert("Algo ha salido mal. intentalo de juevo")

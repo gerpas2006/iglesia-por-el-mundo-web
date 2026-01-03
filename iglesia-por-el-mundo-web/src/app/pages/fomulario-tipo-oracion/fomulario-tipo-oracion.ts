@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from "@angular/router";
 import { TipoOracionesService } from '../../service/tipo-oraciones.service';
 import { TipoOracion } from '../../dto/tipoOraciones.dto';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-fomulario-tipo-oracion',

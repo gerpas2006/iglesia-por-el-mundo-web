@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 import { Router, RouterLink } from "@angular/router";
 import { TipoDonacion } from '../../dto/tipoDonacion.dto';
 import { TipoDonacionService } from '../../service/tipo-donacion.service';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-fomulario-tipo-donacion',

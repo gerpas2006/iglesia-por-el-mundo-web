@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from "@angular/router";
 import { Oracion } from '../../dto/oraciones.dto';
 import { OracionesService } from '../../service/oraciones.service';
 import { TipoOracionesService } from '../../service/tipo-oraciones.service';
-import { TipoOracionesListPages } from '../tipo-oraciones-list-pages/tipo-oraciones-list-pages';
 import { TipoOracion } from '../../interface/tipo-oraciones.interface';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario-oraciones-page',

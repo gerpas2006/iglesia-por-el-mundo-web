@@ -8,9 +8,6 @@
                 <p class="text-secondary mb-0">Organiza y administra todos las citas de la iglesia</p>
             </div>
             <div class="d-flex gap-2">
-                <a routerLink="/formularioTipoCitas" class="btn btn-primary">
-                    <i class="bi bi-plus-lg me-1"></i> Nuevo Tipo De Cita
-                </a>
                 <a routerLink="/tipoCitas" class="btn btn-primary">
                     Ver Tipos de Citas
                 </a>
@@ -91,11 +88,11 @@
 
                         <div class="col-6 col-md-4">
                             <label class="form-label small">Tipo de Servicio</label>
-                            <select class="form-select">
-                                <option>Todos</option>
-                                <option>Misa</option>
-                                <option>Bautizo</option>
-                                <option>Boda</option>
+                            <select #tipoSelect (change)="0" class="form-select">
+                                <option value="">Todos</option>
+                                @for(tipoCita of listaTipoCitas; track tipoCita.id){
+                                    <option [value]="tipoCita.id">{{tipoCita.nombre_cita}}</option>
+                                }
                             </select>
                         </div>
                     </div>
@@ -122,7 +119,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for (cita of (estadoSelect.value ? filtrarPorEstado(estadoSelect.value) : (searchInput.value ? buscarCita(searchInput.value) : listaCitas)); track cita.id) {
+                            @for (cita of (tipoSelect.value ? filtrarPorTipoCita(tipoSelect.value) : (estadoSelect.value ? filtrarPorEstado(estadoSelect.value) : (searchInput.value ? buscarCita(searchInput.value) : listaCitas))); track cita.id) {
                             <tr>
                                 <td>
                                     <div class="d-flex align-items-center">

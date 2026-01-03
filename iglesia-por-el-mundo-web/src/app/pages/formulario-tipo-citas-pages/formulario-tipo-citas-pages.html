@@ -1,1 +1,33 @@
-<p>formulario-tipo-citas-pages works!</p>
+<div class="container">
+    <h2>Crear Nuevo Tipo de Cita</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="crearTipoCita()">
+        <div class="form-group">
+            <label for="nombre_cita">Nombre del Evento</label>
+            <input type="text" class="form-control" id="nombre_cita" formControlName="nombre_cita" required>
+            @if (registerForm.get('nombre_cita')?.invalid && registerForm.get('nombre_cita')?.touched) {
+                <div class="text-danger">
+                    El nombre de la cita es requerido
+                </div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="descripcion_cita">Descripción de la cita</label>
+            <textarea class="form-control" id="descripcion_cita" formControlName="descripcion_cita" rows="4" required></textarea>
+            @if (registerForm.get('descripcion_cita')?.invalid && registerForm.get('descripcion_cita')?.touched) {
+                <div class="text-danger">
+                    La descripción de la cita es requerida
+                </div>
+            }
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
+                Guardar
+            </button>
+            <button type="button" routerLink="/tipoCitas" class="btn btn-secondary">
+                Cancelar
+            </button>
+        </div>
+    </form>
+</div>

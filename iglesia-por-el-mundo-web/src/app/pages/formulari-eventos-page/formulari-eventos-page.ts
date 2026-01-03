@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from "@angular/router";
 import { EventosService } from '../../service/eventos.service';
 import { Evento } from '../../dto/evento.dto';
 import { TipoEventoService } from '../../service/tipo-evento.service';
 import { TipoEvento } from '../../dto/tipoEvento.dto';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
 @Component({
