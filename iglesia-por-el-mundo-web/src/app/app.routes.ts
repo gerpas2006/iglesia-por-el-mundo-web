@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { EventosListPages } from './pages/eventos-list-pages/eventos-list-pages';
 import { OracionesListPages } from './pages/oraciones-list-pages/oraciones-list-pages';
 import { DonacionesListPages } from './pages/donaciones-list-pages/donaciones-list-pages';
-import { ValoracionesListPages } from './pages/valoraciones-list-pages/valoraciones-list-pages';
 import { LoginPages } from './pages/login-pages/login-pages';
 import { RegistroPages } from './pages/registro-pages/registro-pages';
 import { FormulariEventosPage } from './pages/formulari-eventos-page/formulari-eventos-page';
@@ -16,6 +15,7 @@ import { TipoOracionesListPages } from './pages/tipo-oraciones-list-pages/tipo-o
 import { TipoCitasListPages } from './pages/tipo-citas-list-pages/tipo-citas-list-pages';
 import { FormularioTipoCitasPages } from './pages/formulario-tipo-citas-pages/formulario-tipo-citas-pages';
 import { CitasListPages } from './pages/citas-list-pages/citas-list-pages';
+import { ReseneasListPages } from './pages/reseneas-list-pages/reseneas-list-pages';
 
 export const routes: Routes = [
     {
@@ -40,8 +40,8 @@ export const routes: Routes = [
         component: DonacionesListPages
     },
     {
-        path: 'valoraciones',
-        component: ValoracionesListPages
+        path: 'reseñas',
+        component: ReseneasListPages
     },
     {
         path: 'login',
