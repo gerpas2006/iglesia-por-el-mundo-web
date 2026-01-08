@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from "@angular/router";
 import { TipoEventoService } from '../../service/tipo-evento.service';
-import { TipoEvento } from '../../dto/tipoEvento.dto';
+import { TipoEventoDto } from '../../dto/tipoEvento.dto';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -20,7 +20,7 @@ export class FomularioTipoEvento {
   })
 
   crearTipoEvento() {
-    const nuevoTipoEvento = new TipoEvento(
+    const nuevoTipoEvento = new TipoEventoDto(
       0,
       this.registroForm.get('nombre_evento')?.value!,
       this.registroForm.get('descripcion_evento')?.value!

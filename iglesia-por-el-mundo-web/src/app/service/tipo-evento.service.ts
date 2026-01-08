@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TipoEvento } from '../dto/tipoEvento.dto';
+import { TipoEventoDto } from '../dto/tipoEvento.dto';
 import { Observable } from 'rxjs';
 import { TipoEventoResponse } from '../interface/tipo-evento.interface';
 
@@ -13,7 +13,7 @@ export class TipoEventoService {
 
   constructor(private http: HttpClient) { }
 
-  crearTipoEvento(tipoEvento: TipoEvento): Observable<TipoEventoResponse> {
+  crearTipoEvento(tipoEvento: TipoEventoDto): Observable<TipoEventoResponse> {
     return this.http.post<TipoEventoResponse>(`${this.URL_BASE}/tipoEvento`, tipoEvento)
   }
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from "@angular/router";
 import { TipoOracionesService } from '../../service/tipo-oraciones.service';
-import { TipoOracion } from '../../dto/tipoOraciones.dto';
+import { TipoOracionDto } from '../../dto/tipoOraciones.dto';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -20,7 +20,7 @@ export class FomularioTipoOracion {
   })
 
   crearTipoOracion(){
-    const nuevoTipoOracion = new TipoOracion(
+    const nuevoTipoOracion = new TipoOracionDto(
       this.registroForm.get('nombre_oracion')?.value!,
       this.registroForm.get('descripcion_oracion')?.value!
     )

@@ -12,7 +12,8 @@
                     <label for="nombreEvento" class="form-label fw-bold">Nombre del Evento</label>
                     <input type="text" class="form-control" id="nombreEvento" formControlName="nombre_evento"
                         placeholder="">
-                    @if (registroEventos.get('nombre_evento')?.invalid && registroEventos.get('nombre_evento')?.touched) {
+                    @if (registroEventos.get('nombre_evento')?.invalid && registroEventos.get('nombre_evento')?.touched)
+                    {
                     <div class="text-danger small mt-1">El nombre del evento es requerido</div>
                     }
                 </div>
@@ -28,8 +29,7 @@
 
                 <div class="mb-3">
                     <label for="ubicacion" class="form-label fw-bold">Ubicación</label>
-                    <input type="text" class="form-control" id="ubicacion" formControlName="ubicacion"
-                        placeholder="">
+                    <input type="text" class="form-control" id="ubicacion" formControlName="ubicacion" placeholder="">
                     @if (registroEventos.get('ubicacion')?.invalid &&
                     registroEventos.get('ubicacion')?.touched) {
                     <div class="text-danger small mt-1">La ubicación es requerida</div>
@@ -61,18 +61,22 @@
                     <select class="form-select" id="tipoEventoId" formControlName="tipo_evento_id">
                         <option [value]="0">Seleccionar...</option>
                         @for (tipo of listaTipoEventos; track tipo.id) {
-                            <option [value]="tipo.id">{{ tipo.nombre_evento }}</option>
+                        <option [value]="tipo.id">{{ tipo.nombre_evento }}</option>
                         }
                     </select>
-                    @if (registroEventos.get('tipo_evento_id')?.invalid && registroEventos.get('tipo_evento_id')?.touched) {
+                    @if (registroEventos.get('tipo_evento_id')?.invalid &&
+                    registroEventos.get('tipo_evento_id')?.touched) {
                     <div class="text-danger small mt-1">El tipo de evento es requerido</div>
                     }
                 </div>
+                @if (idEvento) {
+                    <button (click)="updateEvento()" type="submit" class="btn btn-primary">Editar Evento</button>
+                }@else {
+                    <button (click)="crearEvento()" type="submit" class="btn btn-primary">Crear Evento</button>
+                }
 
                 <div class="d-flex justify-content-end">
                     <a routerLink="/eventos" type="button" class="btn btn-secondary me-2">Cancelar</a>
-                    <button type="submit" class="btn btn-primary" [disabled]="registroEventos.invalid">Crear
-                        Evento</button>
                 </div>
             </form>
 

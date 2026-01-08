@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TipoOracionResponse } from '../interface/tipo-oraciones.interface';
-import { TipoOracion } from '../dto/tipoOraciones.dto';
+import { TipoOracionDto } from '../dto/tipoOraciones.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +22,7 @@ export class TipoOracionesService {
     return this.http.delete<TipoOracionResponse>(`${this.URL_BASE}/tipoOracion/${id}`)
   }
 
-  crearTipoOracion(TipoOracion:TipoOracion):Observable<TipoOracionResponse>{
+  crearTipoOracion(TipoOracion:TipoOracionDto):Observable<TipoOracionResponse>{
     return this.http.post<TipoOracionResponse>(`${this.URL_BASE}/tipoOracion`,TipoOracion)
   }
   

@@ -1,4 +1,4 @@
-export class TipoOracion {
+export class TipoOracionDto {
     nombre_oracion: string;
     descripcion_oracion: string;
 

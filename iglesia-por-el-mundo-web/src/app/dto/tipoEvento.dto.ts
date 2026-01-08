@@ -1,4 +1,4 @@
-export class TipoEvento {
+export class TipoEventoDto {
     id: number;
     nombre_evento: string;
     descripcion_evento: string;

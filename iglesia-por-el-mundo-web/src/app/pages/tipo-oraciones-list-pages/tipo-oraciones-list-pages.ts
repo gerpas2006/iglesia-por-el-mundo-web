@@ -28,6 +28,7 @@ export class TipoOracionesListPages implements OnInit{
   deleteTipoOracion(id:number):void{
     this.serviceTipoOracion.deleteTipoOracion(id).subscribe(resp =>{
       alert("Eliminado Correctamente")
+      window.location.reload();
     }, 
     error =>{
       alert("Algo ha salido mal intentalo más tarde")

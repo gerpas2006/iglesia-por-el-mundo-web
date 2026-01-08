@@ -29,6 +29,7 @@ export class ReseneasListPages implements OnInit{
   deleteResenea(id:number):void{
     this.serviceResenea.deleteResenea(id).subscribe(resp =>{
       alert("Eliminado Correctamente")
+      window.location.reload();
     },
     error =>{
         alert("Algo ha salido mal, intentalo mas tarde")

@@ -1,4 +1,4 @@
-export class Oracion {
+export class OracionDto {
     nombre_oracion: string;
     texto_oracion: string;
     autor: string;

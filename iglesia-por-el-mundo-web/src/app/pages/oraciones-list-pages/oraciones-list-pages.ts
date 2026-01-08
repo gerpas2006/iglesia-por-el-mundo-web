@@ -29,6 +29,7 @@ export class OracionesListPages implements OnInit{
   deleteOraciones(id:number):void{
     this.serviceOraciones.deleteOracion(id).subscribe(resp =>{
       alert("Eliminado correctamente")
+      window.location.reload();
     },
     error =>{
       alert("Algo ha salido mal, intentalo más tarde")

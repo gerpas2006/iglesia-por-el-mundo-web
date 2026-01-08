@@ -33,6 +33,7 @@ export class TipoDonacionesListPage implements OnInit{
   deleteTipoDonaciones(id:number):void{
     this.serviceTipoDonacion.deleteDonacion(id).subscribe(resp =>{
       alert("Eliminando correctamente")
+      window.location.reload();
     },
       error =>{
         alert("Algo ha salido mal, intentalo mas tarde")

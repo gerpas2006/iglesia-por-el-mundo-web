@@ -58,7 +58,7 @@
                                 <td><strong>{{tipoDonacion.nombre_donacion}}</strong></td>
                                 <td><small class="text-secondary">{{tipoDonacion.descripcion_donacion}}</small></td>
                                 <td class="text-end">
-                                    <button class="btn btn-outline-secondary btn-sm"><i
+                                    <button [routerLink]="['/formularioTipoDonacion',tipoDonacion.id]" class="btn btn-outline-secondary btn-sm"><i
                                             class="bi bi-pencil"></i></button>
                                     <button (click)="deleteTipoDonaciones(tipoDonacion.id)"
                                         onclick="alert('¿Seguro que quieres eliminar este tipo de evento?')"

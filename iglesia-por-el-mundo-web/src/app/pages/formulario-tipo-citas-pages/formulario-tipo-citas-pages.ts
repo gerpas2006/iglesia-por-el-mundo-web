@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TipoCitasService } from '../../service/tipo-citas.service';
 import { Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { TipoCita } from '../../dto/tipoCitas.dto';
+import { TipoCitaDto } from '../../dto/tipoCitas.dto';
 
 @Component({
   selector: 'app-formulario-tipo-citas-pages',
@@ -20,7 +20,7 @@ export class FormularioTipoCitasPages {
   })
 
   crearTipoCita(){
-    const crearTipoCita = new TipoCita(
+    const crearTipoCita = new TipoCitaDto(
       this.registerForm.get('nombre_cita')?.value!,
       this.registerForm.get('descripcion_cita')?.value!
     )

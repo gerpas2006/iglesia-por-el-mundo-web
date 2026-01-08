@@ -1,4 +1,4 @@
-export class TipoDonacion {
+export class TipoDonacionDto {
     nombre_donacion: string;
     descripcion_donacion: string;
 

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Evento, EventosResponse } from '../interface/eventos.interface';
+import { EventoDto } from '../dto/evento.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -13,15 +14,19 @@ export class EventosService {
   constructor(private http:HttpClient){}
 
   getEventos(): Observable<EventosResponse>{
-   return this.http.get<EventosResponse>(`${this.URL_BASE}/eventos`)
+  return this.http.get<EventosResponse>(`${this.URL_BASE}/eventos`)
   }
 
   removeEventos(id:number): Observable<EventosResponse>{
     return this.http.delete<EventosResponse>(`${this.URL_BASE}/eventos/${id}`)
   }
   
-  crearEvento(evento:Evento): Observable<EventosResponse>{
+  crearEvento(evento:EventoDto): Observable<EventosResponse>{
     return this.http.post<EventosResponse>(`${this.URL_BASE}/eventos`,evento)
+  }
+
+  updateEvento(evento:EventoDto, id:number):Observable<EventosResponse>{
+    return this.http.put<EventosResponse>(`${this.URL_BASE}/eventos/${id}`,evento)
   }
 
 }

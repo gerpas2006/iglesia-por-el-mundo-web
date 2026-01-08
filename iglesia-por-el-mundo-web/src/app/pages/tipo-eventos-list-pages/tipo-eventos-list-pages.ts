@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TipoEventoService } from '../../service/tipo-evento.service';
-import { TipoEvento } from '../../dto/tipoEvento.dto';
+import { TipoEventoDto } from '../../dto/tipoEvento.dto';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class TipoEventosListPages implements OnInit {
 
-  listaTipoEventos: TipoEvento[] = []
+  listaTipoEventos: TipoEventoDto[] = []
 
   constructor(private serviceTipoEvento: TipoEventoService) { }
 
@@ -32,6 +32,7 @@ export class TipoEventosListPages implements OnInit {
   deleteTipoEventos(id:number){
     return this.serviceTipoEvento.deleteTipoEvento(id).subscribe(resp =>{
       alert("Eliminado Correcatamente")
+      window.location.reload();
     },
     error =>{
       alert("Algo a salido mal, intentalo más tarde")

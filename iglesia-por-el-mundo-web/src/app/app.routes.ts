@@ -52,6 +52,10 @@ export const routes: Routes = [
         component: RegistroPages
     },
     {
+        path: 'formularioEventos/:id',
+        component: FormulariEventosPage
+    },
+    {
         path: 'formularioEventos',
         component: FormulariEventosPage
     },
@@ -64,7 +68,7 @@ export const routes: Routes = [
         component: FomularioTipoEvento
     },
     {
-        path: 'formularioTipoDonacion',
+        path: 'formularioTipoDonacion/:id',
         component: FomularioTipoDonacion
     },
     {
@@ -90,6 +94,10 @@ export const routes: Routes = [
     {
         path: 'formularioTipoCitas',
         component: FormularioTipoCitasPages
+    },
+    {
+        path: 'formularioTipoDonacion',
+        component: FomularioTipoDonacion
     }
 
 

@@ -1,4 +1,4 @@
-export class TipoCita{
+export class TipoCitaDto{
     nombre_cita: string;
     descripcion_cita: string;
 

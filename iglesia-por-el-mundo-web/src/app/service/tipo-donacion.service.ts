@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TipoDonacion } from '../dto/tipoDonacion.dto';
+import { TipoDonacionDto } from '../dto/tipoDonacion.dto';
 import { Observable } from 'rxjs';
 import { TipoDonacionResponse } from '../interface/tipo-donacion.interface';
 
@@ -13,7 +13,7 @@ export class TipoDonacionService {
 
   constructor(private http: HttpClient) { }
 
-  crearTipoDonacion(TipoDonacion:TipoDonacion):Observable<TipoDonacionResponse>{
+  crearTipoDonacion(TipoDonacion:TipoDonacionDto):Observable<TipoDonacionResponse>{
     return this.http.post<TipoDonacionResponse>(`${this.URL_BASE}/tipoDonaciones`,TipoDonacion)
   }
 
@@ -23,6 +23,10 @@ export class TipoDonacionService {
 
   deleteDonacion(id:number):Observable<TipoDonacionResponse>{
       return this.http.delete<TipoDonacionResponse>(`${this.URL_BASE}/tipoDonaciones/${id}`)
+  }
+
+  updateTipoDonacion(TipoDonacion:TipoDonacionDto, id:number):Observable<TipoDonacionResponse>{
+    return this.http.put<TipoDonacionResponse>(`${this.URL_BASE}/tipoDonaciones/${id}`,TipoDonacion)
   }
 
 }

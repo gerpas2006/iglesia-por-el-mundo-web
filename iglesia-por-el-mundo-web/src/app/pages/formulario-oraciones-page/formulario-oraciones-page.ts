@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from "@angular/router";
-import { Oracion } from '../../dto/oraciones.dto';
+import { OracionDto } from '../../dto/oraciones.dto';
 import { OracionesService } from '../../service/oraciones.service';
 import { TipoOracionesService } from '../../service/tipo-oraciones.service';
 import { TipoOracion } from '../../interface/tipo-oraciones.interface';
@@ -32,7 +32,7 @@ export class FormularioOracionesPage implements OnInit{
   });
 
   crearOracion(){
-    const nuevaOracion = new Oracion(
+    const nuevaOracion = new OracionDto(
       this.registroOraciones.get('nombre_oracion')?.value!,
       this.registroOraciones.get('texto_oracion')?.value!,
       this.registroOraciones.get('autor')?.value!,

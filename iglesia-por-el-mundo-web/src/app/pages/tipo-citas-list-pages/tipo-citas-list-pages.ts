@@ -29,6 +29,7 @@ export class TipoCitasListPages implements OnInit{
   deleteTipoCita(id:number):void{
     this.serviceTipoCitas.deleteTipoCitas(id).subscribe(resp =>{
       alert("Eliminado Correctamente")
+      window.location.reload();
     },
     error => {
       alert("Algo ha salido mal, intentalo más tarde")

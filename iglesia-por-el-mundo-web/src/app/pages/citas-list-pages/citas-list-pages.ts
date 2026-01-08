@@ -39,7 +39,8 @@ export class CitasListPages implements OnInit {
 
   deleteCita(id: number): void {
     this.serviceCitas.deleteCitas(id).subscribe(resp => {
-      alert("Eliminado Correctamente")
+      alert("Eliminado Correctamente");
+      window.location.reload();
     },
       error => {
         alert("Algo ha salido mal, intentalo más tarde")

@@ -29,6 +29,7 @@ export class EventosListPages implements OnInit{
   removeEvento(id:number):void{
     this.serviceEventos.removeEventos(id).subscribe(resp=>{
       alert("Eliminado correctamente")
+      window.location.reload();
     })
   }
 

@@ -29,6 +29,7 @@ export class DonacionesListPages implements OnInit {
   removeDonaciones(id: number): void {
     this.serviceDonaciones.removeDonacion(id).subscribe(resp => {
         alert("Eliminado correctamente ")
+        window.location.reload();
     },
       error =>{
         alert("Algo ha slido mal, intentalo más tarde")
