@@ -1,6 +1,6 @@
 <div class="container">
     <h2>Formulario de Tipo de Donación</h2>
-    <form [formGroup]="registroForm" (ngSubmit)="crearTipoDonacion()">
+    <form [formGroup]="registroForm" (ngSubmit)="idTipoD ? updateTipoDonacion() : crearTipoDonacion()">
         <div class="form-group">
             <label for="nombre_donacion">Nombre de Donación</label>
             <input type="text" class="form-control" id="nombre_donacion" formControlName="nombre_donacion" required>
@@ -13,9 +13,9 @@
         </div>
 
         @if (idTipoD) {
-            <button type="submit" (click)="updateTipoDonacion()" class="btn btn-primary">Editar</button>
+            <button type="submit" class="btn btn-primary">Editar</button>
         }@else{
-            <button type="submit" (click)="crearTipoDonacion()" class="btn btn-primary">Crear</button>
+            <button type="submit" class="btn btn-primary">Crear</button>
         }
         
         <button type="button" routerLink="/donaciones" class="btn btn-secondary">Cancelar</button>

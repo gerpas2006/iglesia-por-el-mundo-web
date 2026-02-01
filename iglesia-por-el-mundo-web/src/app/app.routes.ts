@@ -98,7 +98,12 @@ export const routes: Routes = [
     {
         path: 'formularioTipoDonacion',
         component: FomularioTipoDonacion
+    },
+    {
+        path: 'formularioTipoEvento/:id',
+        component: FomularioTipoEvento
     }
+
 
 
 
