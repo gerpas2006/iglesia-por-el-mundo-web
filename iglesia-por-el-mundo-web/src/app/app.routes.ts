@@ -16,6 +16,8 @@ import { TipoCitasListPages } from './pages/tipo-citas-list-pages/tipo-citas-lis
 import { FormularioTipoCitasPages } from './pages/formulario-tipo-citas-pages/formulario-tipo-citas-pages';
 import { CitasListPages } from './pages/citas-list-pages/citas-list-pages';
 import { ReseneasListPages } from './pages/reseneas-list-pages/reseneas-list-pages';
+import { cUSTOMNAMEGuard } from './custom-name-guard';
+
 
 export const routes: Routes = [
     {
@@ -25,23 +27,28 @@ export const routes: Routes = [
     },
     {
         path: 'citas',
-        component: CitasListPages
+        component: CitasListPages,
+        canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'eventos',
-        component: EventosListPages
+        component: EventosListPages,
+        canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'oraciones',
-        component: OracionesListPages
+        component: OracionesListPages,
+        canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'donaciones',
-        component: DonacionesListPages
+        component: DonacionesListPages,
+        canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'reseñas',
-        component: ReseneasListPages
+        component: ReseneasListPages,
+        canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'login',
@@ -53,51 +60,63 @@ export const routes: Routes = [
     },
     {
         path: 'formularioEventos/:id',
-        component: FormulariEventosPage
+        component: FormulariEventosPage,
+        canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'formularioEventos',
-        component: FormulariEventosPage
+        component: FormulariEventosPage,
+        canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'formularioOraciones',
-        component: FormularioOracionesPage
+        component: FormularioOracionesPage,
+        canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'formularioTipoEvento',
-        component: FomularioTipoEvento
+        component: FomularioTipoEvento,
+        canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'formularioTipoDonacion/:id',
-        component: FomularioTipoDonacion
+        component: FomularioTipoDonacion,
+        canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'formularioTipoOracion',
-        component: FomularioTipoOracion
+        component: FomularioTipoOracion,
+        canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'tipoEventos',
-        component: TipoEventosListPages
+        component: TipoEventosListPages,
+        canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'tipoDonacion',
-        component:TipoDonacionesListPage
+        component:TipoDonacionesListPage,
+        canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'tipoOracion',
-        component: TipoOracionesListPages
+        component: TipoOracionesListPages,
+        canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'tipoCitas',
-        component: TipoCitasListPages
+        component: TipoCitasListPages,
+        canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'formularioTipoCitas',
-        component: FormularioTipoCitasPages
+        component: FormularioTipoCitasPages,
+        canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'formularioTipoDonacion',
-        component: FomularioTipoDonacion
+        component: FomularioTipoDonacion,
+        canActivate: [cUSTOMNAMEGuard]
     }
 
 

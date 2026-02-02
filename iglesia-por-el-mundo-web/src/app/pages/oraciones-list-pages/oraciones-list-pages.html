@@ -62,7 +62,6 @@
                     <table class="table align-middle">
                         <thead class="table-light">
                             <tr>
-                                <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Tipo oracion</th>
                                 <th>Autor</th>
@@ -75,7 +74,6 @@
                             @for (oracion of searchInput.value ? buscarOracion(searchInput.value) : listaOraciones;
                             track oracion.id) {
                             <tr>
-                                <td>{{oracion.id}}</td>
                                 <td>
                                     <strong>{{oracion.nombre_oracion}}</strong>
                                 </td>

@@ -28,7 +28,7 @@ export class LoginPages {
       const token = resp.token
       localStorage.setItem('token', token);
       if (resp.user.role != 'admin') {
-        alert("Tu puta madre no eres admin")
+        alert("Losiento no puedes entar por que no tienes permisos de administrador")
       } else {
         this.route.navigate(['citas'])
       }

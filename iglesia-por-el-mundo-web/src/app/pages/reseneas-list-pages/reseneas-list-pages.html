@@ -81,7 +81,9 @@
                                 <td class="text-muted small">{{resena.fecha_resenea}}</td>
                                 <td class="text-end">
                                     <div class="btn-group btn-group-sm" role="group">
-                                        <button class="btn btn-outline-danger" (click)="deleteResenea(resena.id)">🗑️</button>
+                                        <button onclick="alert('Seguro que quieres eliminar la reseña')" (click)="deleteResenea(resena.id)" class="btn btn-outline-danger btn-sm"><i
+                                            class="bi bi-trash"></i></button>
+                                        
                                     </div>
                                 </td>
                             </tr>

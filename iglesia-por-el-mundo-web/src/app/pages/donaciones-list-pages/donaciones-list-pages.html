@@ -59,7 +59,6 @@
                     <table class="table align-middle">
                         <thead class="table-light">
                             <tr>
-                                <th>ID</th>
                                 <th>Donante</th>
                                 <th>Tipo</th>
                                 <th>Donación</th>
@@ -73,7 +72,6 @@
                             @for (donacion of searchInput.value ? buscarDonacion(searchInput.value) : listaDonaciones;
                             track donacion.id) {
                             <tr>
-                                <td>{{ donacion.id }}</td>
                                 <td>{{ donacion.nombre_donante }}</td>
                                 <td>{{ donacion.tipo_donacion_id}}</td>
                                 <td>{{ donacion.donacion }} €</td>
