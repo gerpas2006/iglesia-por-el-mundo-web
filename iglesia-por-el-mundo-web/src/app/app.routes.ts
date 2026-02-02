@@ -117,6 +117,7 @@ export const routes: Routes = [
     },
     {
         path: 'formularioTipoDonacion',
+<<<<<<< HEAD
         component: FomularioTipoDonacion,
         canActivate: [cUSTOMNAMEGuard]
     }
@@ -125,7 +126,15 @@ export const routes: Routes = [
         path: 'usuarios',
         component: UsuariosListPages,
         canActivate: [cUSTOMNAMEGuard]
+=======
+        component: FomularioTipoDonacion
+    },
+    {
+        path: 'formularioTipoEvento/:id',
+        component: FomularioTipoEvento
+>>>>>>> 0cc837fb340c84d643e99b1b6fc1faa0f7797d74
     }
+
 
 
 

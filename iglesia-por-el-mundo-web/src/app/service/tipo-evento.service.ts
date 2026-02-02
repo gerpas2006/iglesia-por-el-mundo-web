@@ -25,5 +25,9 @@ export class TipoEventoService {
     return this.http.delete<TipoEventoResponse>(`${this.URL_BASE}/tipoEvento/${id}`)
   }
 
+  editarTipoEvento(tipoEventoDto :TipoEventoDto ,id:number):Observable<TipoEventoResponse>{
+    return this.http.put<TipoEventoResponse>(`${this.URL_BASE}/tipoEvento/${id}`,tipoEventoDto)
+  }
+
 
 }
