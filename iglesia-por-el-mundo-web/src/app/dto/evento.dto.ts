@@ -3,14 +3,14 @@ export class EventoDto {
     fecha_evento: string;
     ubicacion: string;
     descripcion_evento: string;
-    estado: boolean
+    estado: number
     tipo_evento_id: number;
 
     constructor(nombre_evento: string,
         fecha_evento: string,
         ubicacion: string,
         descripcion_evento: string,
-        estado: boolean,
+        estado: number,
         tipo_evento_id: number) {
         this.nombre_evento = nombre_evento;
         this.fecha_evento = fecha_evento;

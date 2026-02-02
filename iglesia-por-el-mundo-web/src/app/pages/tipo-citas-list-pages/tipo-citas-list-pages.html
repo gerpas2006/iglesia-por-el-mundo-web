@@ -1,5 +1,14 @@
 <body class="bg-light">
 
+    @if (mostrarToast) {
+    <div class="position-fixed top-50 start-50 translate-middle" style="z-index: 9999">
+        <div class="alert alert-success shadow-lg text-center p-4" role="alert" style="min-width: 400px">
+            <h3 class="mb-2">✓</h3>
+            <h5 class="mb-0">Tipo de cita eliminado correctamente</h5>
+        </div>
+    </div>
+    }
+
     <div class="container py-4">
 
         <div class="d-flex justify-content-between align-items-start mb-4">
@@ -56,7 +65,7 @@
                                 <td><strong>{{tipoCita.nombre_cita}}</strong></td>
                                 <td><small class="text-secondary">{{tipoCita.descripcion_cita}}</small></td>
                                 <td class="text-end">
-                                    <button class="btn btn-outline-secondary btn-sm"><i
+                                    <button [routerLink]="['/formularioTipoCitas', tipoCita.id]" class="btn btn-outline-secondary btn-sm"><i
                                             class="bi bi-pencil"></i></button>
                                     <button (click)="deleteTipoCita(tipoCita.id)"
                                         onclick="alert('¿Seguro que quieres eliminar este tipo de cita?')"

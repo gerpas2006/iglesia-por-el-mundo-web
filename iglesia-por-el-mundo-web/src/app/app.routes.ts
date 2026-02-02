@@ -19,6 +19,7 @@ import { ReseneasListPages } from './pages/reseneas-list-pages/reseneas-list-pag
 import { cUSTOMNAMEGuard } from './custom-name-guard';
 import { Usuario } from './dto/usuario.dto';
 import { UsuariosListPages } from './pages/usuarios-list-pages/usuarios-list-pages';
+import { FormularioEditarUsuario } from './pages/formulario-editar-usuario/formulario-editar-usuario';
 
 
 export const routes: Routes = [
@@ -111,13 +112,17 @@ export const routes: Routes = [
         canActivate: [cUSTOMNAMEGuard]
     },
     {
+        path: 'formularioTipoCitas/:id',
+        component: FormularioTipoCitasPages,
+        canActivate: [cUSTOMNAMEGuard]
+    },
+    {
         path: 'formularioTipoCitas',
         component: FormularioTipoCitasPages,
         canActivate: [cUSTOMNAMEGuard]
     },
     {
         path: 'formularioTipoDonacion',
-<<<<<<< HEAD
         component: FomularioTipoDonacion,
         canActivate: [cUSTOMNAMEGuard]
     }
@@ -126,13 +131,26 @@ export const routes: Routes = [
         path: 'usuarios',
         component: UsuariosListPages,
         canActivate: [cUSTOMNAMEGuard]
-=======
-        component: FomularioTipoDonacion
     },
     {
         path: 'formularioTipoEvento/:id',
-        component: FomularioTipoEvento
->>>>>>> 0cc837fb340c84d643e99b1b6fc1faa0f7797d74
+        component: FomularioTipoEvento,
+        canActivate: [cUSTOMNAMEGuard]
+    },
+    {
+        path: 'formularioTipoOracion/:id',
+        component: FomularioTipoOracion,
+        canActivate: [cUSTOMNAMEGuard]
+    },
+    {
+        path: 'formularioOraciones/:id',
+        component: FormularioOracionesPage,
+        canActivate: [cUSTOMNAMEGuard]
+    }, 
+    {
+        path: 'formularioUsuario/:id',
+        component: FormularioEditarUsuario,
+        canActivate: [cUSTOMNAMEGuard]
     }
 
 

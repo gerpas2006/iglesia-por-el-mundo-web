@@ -12,6 +12,7 @@ import { OracionesService } from '../../service/oraciones.service';
 export class OracionesListPages implements OnInit{
 
   listaOraciones:Oracion[]=[]
+  mostrarToast: boolean = false
 
   constructor(private serviceOraciones:OracionesService){}
 
@@ -28,8 +29,8 @@ export class OracionesListPages implements OnInit{
 
   deleteOraciones(id:number):void{
     this.serviceOraciones.deleteOracion(id).subscribe(resp =>{
-      alert("Eliminado correctamente")
-      window.location.reload();
+      this.mostrarToast = true
+      setTimeout(() => window.location.reload(), 2000)
     },
     error =>{
       alert("Algo ha salido mal, intentalo más tarde")

@@ -1,4 +1,14 @@
 <body class="bg-light">
+
+    @if (mostrarToast) {
+    <div class="position-fixed top-50 start-50 translate-middle" style="z-index: 9999">
+        <div class="alert alert-success shadow-lg text-center p-4" role="alert" style="min-width: 400px">
+            <h3 class="mb-2">✓</h3>
+            <h5 class="mb-0">Oración eliminada correctamente</h5>
+        </div>
+    </div>
+    }
+
     <main class="container py-4">
 
         <!-- Header -->
@@ -81,7 +91,7 @@
                                     @if (oracion.tipo_oracion_id==null) {
                                         <span>No tiene ningun tipo asociado</span>
                                     }
-                                    <span>{{oracion.tipo_oracion_id}}</span>
+                                    <span>{{oracion.tipo_oracion?.nombre_oracion}}</span>
                                 </td>
                                 <td>
                                     <span class="text-secondary">{{oracion.autor || 'Sin autor'}}</span>
@@ -99,7 +109,7 @@
                                     </div>
                                 </td>
                                 <td class="text-end">
-                                    <button class="btn btn-outline-secondary btn-sm me-1"><i
+                                    <button [routerLink]="['/formularioOraciones', oracion.id]" class="btn btn-outline-secondary btn-sm me-1"><i
                                             class="bi bi-pencil"></i></button>
                                     <button onclick="alert('Seguro que quieres eliminar la oracion')"
                                         (click)="deleteOraciones(oracion.id)" class="btn btn-outline-danger btn-sm"><i

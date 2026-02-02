@@ -1,68 +1,102 @@
-<div class="modal-dialog modal-lg">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">Nueva Oración</h5>
-            <a routerLink="/oraciones" type="button" class="btn-close" aria-label="Close"></a>
-        </div>
-        <div class="modal-body">
-            <p class="text-muted">Crea una nueva oración para el día</p>
-
-            <form [formGroup]="registroOraciones" (ngSubmit)="crearOracion()">
-                <div class="mb-3">
-                    <label for="nombre_oracion" class="form-label fw-bold">Nombre de la Oración</label>
-                    <input type="text" class="form-control" id="nombre_oracion" formControlName="nombre_oracion"
-                        placeholder="Ej: Oración de la Mañana">
-                    @if (registroOraciones.get('nombre_oracion')?.invalid &&
-                    registroOraciones.get('nombre_oracion')?.touched) {
-                    <div class="text-danger small mt-1">El nombre es requerido (máximo 255 caracteres)</div>
-                    }
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">@if (idOracion) {Editar} @else {Crear} Oración</h4>
                 </div>
+                <div class="card-body p-4">
+                    <form [formGroup]="registroOraciones" (ngSubmit)="idOracion ? editarOracion(idOracion) : crearOracion()">
+                        <div class="mb-4">
+                            <label for="nombre_oracion" class="form-label fw-bold">
+                                <i class="bi bi-peace-fill me-2"></i>Nombre de la Oración
+                            </label>
+                            <input 
+                                type="text" 
+                                class="form-control form-control-lg" 
+                                id="nombre_oracion" 
+                                formControlName="nombre_oracion"
+                                placeholder="Ej: Oración de la Mañana">
+                            @if (registroOraciones.get('nombre_oracion')?.invalid && registroOraciones.get('nombre_oracion')?.touched) {
+                                <div class="text-danger small mt-2">
+                                    <i class="bi bi-exclamation-circle me-1"></i>
+                                    El nombre es requerido (máximo 255 caracteres)
+                                </div>
+                            }
+                        </div>
 
-                <div class="mb-3">
-                    <label for="texto_oracion" class="form-label fw-bold">Texto de la Oración</label>
-                    <textarea class="form-control" id="texto_oracion" rows="4" formControlName="texto_oracion"
-                        placeholder="Escribe el contenido de la oración aquí..."></textarea>
-                    @if (registroOraciones.get('texto_oracion')?.invalid &&
-                    registroOraciones.get('texto_oracion')?.touched) {
-                    <div class="text-danger small mt-1">El texto es requerido</div>
-                    }
-                </div>
+                        <div class="mb-4">
+                            <label for="texto_oracion" class="form-label fw-bold">
+                                <i class="bi bi-text-paragraph me-2"></i>Texto de la Oración
+                            </label>
+                            <textarea 
+                                class="form-control form-control-lg" 
+                                id="texto_oracion" 
+                                rows="4" 
+                                formControlName="texto_oracion"
+                                placeholder="Escribe el contenido de la oración aquí..."></textarea>
+                            @if (registroOraciones.get('texto_oracion')?.invalid && registroOraciones.get('texto_oracion')?.touched) {
+                                <div class="text-danger small mt-2">
+                                    <i class="bi bi-exclamation-circle me-1"></i>
+                                    El texto es requerido
+                                </div>
+                            }
+                        </div>
 
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="autor" class="form-label fw-bold">Autor</label>
-                        <input type="text" class="form-control" id="autor" formControlName="autor"
-                            placeholder="Nombre del autor">
-                        @if (registroOraciones.get('autor')?.invalid &&
-                        registroOraciones.get('autor')?.touched) {
-                        <div class="text-danger small mt-1">El autor es requerido (máximo 255 caracteres)</div>
-                        }
-                    </div>
-                    <div class="col-md-6">
-                        <label for="estado" class="form-label fw-bold">Estado</label>
-                        <select class="form-select" id="estado" formControlName="estado">
-                            <option [value]="true">Programada</option>
-                            <option [value]="false">Publicada</option>
-                        </select>
-                    </div>
-                </div>
+                        <div class="mb-4">
+                            <label for="autor" class="form-label fw-bold">
+                                <i class="bi bi-person-fill me-2"></i>Autor
+                            </label>
+                            <input 
+                                type="text" 
+                                class="form-control form-control-lg" 
+                                id="autor" 
+                                formControlName="autor"
+                                placeholder="Nombre del autor">
+                            @if (registroOraciones.get('autor')?.invalid && registroOraciones.get('autor')?.touched) {
+                                <div class="text-danger small mt-2">
+                                    <i class="bi bi-exclamation-circle me-1"></i>
+                                    El autor es requerido (máximo 255 caracteres)
+                                </div>
+                            }
+                        </div>
 
-                <div class="mb-3">
-                    <label for="tipo_oracion_id" class="form-label fw-bold">Tipo de Oración</label>
-                    <select class="form-select" id="tipo_oracion_id" formControlName="tipo_oracion_id">
-                        <option [value]="null">Seleccionar...</option>
-                        @for (tipo of listaTipoOracion; track tipo.id) {
-                            <option [value]="tipo.id">{{tipo.nombre_oracion}}</option>
-                        }
-                    </select>
-                </div>
+                        <div class="mb-4">
+                            <label for="estado" class="form-label fw-bold">
+                                <i class="bi bi-toggle-on me-2"></i>Estado
+                            </label>
+                            <select class="form-select form-select-lg" id="estado" formControlName="estado">
+                                <option [value]="1">Programada</option>
+                                <option [value]="2">Publicada</option>
+                            </select>
+                        </div>
 
-                <div class="d-flex justify-content-end">
-                    <button routerLink="/oraciones" type="button" class="btn btn-secondary me-2">Cancelar</button>
-                    <button type="submit" class="btn btn-primary" [disabled]="registroOraciones.invalid">Crear
-                        Oración</button>
+                        <div class="mb-4">
+                            <label for="tipo_oracion_id" class="form-label fw-bold">
+                                <i class="bi bi-tag-fill me-2"></i>Tipo de Oración
+                            </label>
+                            <select class="form-select form-select-lg" id="tipo_oracion_id" formControlName="tipo_oracion_id">
+                                <option [value]="null">Seleccionar...</option>
+                                @for (tipo of listaTipoOracion; track tipo.id) {
+                                    <option [value]="tipo.id">{{tipo.nombre_oracion}}</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-3 mt-4 pt-3 border-top">
+                            <a routerLink="/oraciones" class="btn btn-outline-secondary px-4">
+                                <i class="bi bi-x-circle me-2"></i>Cancelar
+                            </a>
+                            <button 
+                                type="submit" 
+                                class="btn btn-primary px-4" 
+                                [disabled]="registroOraciones.invalid">
+                                <i class="bi bi-check-circle me-2"></i>@if (idOracion) {Guardar Cambios} @else {Crear Oración}
+                            </button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

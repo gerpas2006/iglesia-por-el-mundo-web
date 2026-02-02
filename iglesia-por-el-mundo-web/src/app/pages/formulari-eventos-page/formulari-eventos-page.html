@@ -1,85 +1,131 @@
-<div class="modal-dialog modal-lg">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">Nuevo Evento</h5>
-            <a routerLink="/eventos" type="button" class="btn-close" aria-label="Close"></a>
-        </div>
-        <div class="modal-body">
-            <p class="text-muted">Crea un nuevo evento para la iglesia</p>
-
-            <form [formGroup]="registroEventos" (ngSubmit)="crearEvento()">
-                <div class="mb-3">
-                    <label for="nombreEvento" class="form-label fw-bold">Nombre del Evento</label>
-                    <input type="text" class="form-control" id="nombreEvento" formControlName="nombre_evento"
-                        placeholder="">
-                    @if (registroEventos.get('nombre_evento')?.invalid && registroEventos.get('nombre_evento')?.touched)
-                    {
-                    <div class="text-danger small mt-1">El nombre del evento es requerido</div>
-                    }
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">@if (idEvento) {Editar} @else {Crear} Evento</h4>
                 </div>
+                <div class="card-body p-4">
+                    <form [formGroup]="registroEventos" (ngSubmit)="idEvento ? updateEvento() : crearEvento()">
+                        <div class="mb-4">
+                            <label for="nombreEvento" class="form-label fw-bold">
+                                <i class="bi bi-calendar-event-fill me-2"></i>Nombre del Evento
+                            </label>
+                            <input 
+                                type="text" 
+                                class="form-control form-control-lg" 
+                                id="nombreEvento" 
+                                formControlName="nombre_evento"
+                                placeholder="Ingrese el nombre del evento">
+                            @if (registroEventos.get('nombre_evento')?.invalid && registroEventos.get('nombre_evento')?.touched) {
+                                <div class="text-danger small mt-2">
+                                    <i class="bi bi-exclamation-circle me-1"></i>
+                                    El nombre del evento es requerido
+                                </div>
+                            }
+                        </div>
 
-                <div class="mb-3">
-                    <label for="fecha" class="form-label fw-bold">Fecha</label>
-                    <input type="datetime-local" class="form-control" id="fecha" formControlName="fecha_evento">
-                    @if (registroEventos.get('fecha_evento')?.invalid && registroEventos.get('fecha_evento')?.touched)
-                    {
-                    <div class="text-danger small mt-1">La fecha es requerida</div>
-                    }
-                </div>
+                        <div class="mb-4">
+                            <label for="fecha" class="form-label fw-bold">
+                                <i class="bi bi-calendar-date-fill me-2"></i>Fecha
+                            </label>
+                            <input 
+                                type="datetime-local" 
+                                class="form-control form-control-lg" 
+                                id="fecha" 
+                                formControlName="fecha_evento">
+                            @if (registroEventos.get('fecha_evento')?.invalid && registroEventos.get('fecha_evento')?.touched) {
+                                <div class="text-danger small mt-2">
+                                    <i class="bi bi-exclamation-circle me-1"></i>
+                                    La fecha es requerida
+                                </div>
+                            }
+                        </div>
 
-                <div class="mb-3">
-                    <label for="ubicacion" class="form-label fw-bold">Ubicación</label>
-                    <input type="text" class="form-control" id="ubicacion" formControlName="ubicacion" placeholder="">
-                    @if (registroEventos.get('ubicacion')?.invalid &&
-                    registroEventos.get('ubicacion')?.touched) {
-                    <div class="text-danger small mt-1">La ubicación es requerida</div>
-                    }
-                </div>
+                        <div class="mb-4">
+                            <label for="ubicacion" class="form-label fw-bold">
+                                <i class="bi bi-geo-alt-fill me-2"></i>Ubicación
+                            </label>
+                            <input 
+                                type="text" 
+                                class="form-control form-control-lg" 
+                                id="ubicacion" 
+                                formControlName="ubicacion" 
+                                placeholder="Ingrese la ubicación del evento">
+                            @if (registroEventos.get('ubicacion')?.invalid && registroEventos.get('ubicacion')?.touched) {
+                                <div class="text-danger small mt-2">
+                                    <i class="bi bi-exclamation-circle me-1"></i>
+                                    La ubicación es requerida
+                                </div>
+                            }
+                        </div>
 
-                <div class="mb-3">
-                    <label for="descripcion" class="form-label fw-bold">Descripción</label>
-                    <textarea class="form-control" id="descripcion" rows="3" formControlName="descripcion_evento"
-                        placeholder="Descripción del evento..."></textarea>
-                    @if (registroEventos.get('descripcion_evento')?.invalid &&
-                    registroEventos.get('descripcion_evento')?.touched) {
-                    <div class="text-danger small mt-1">La descripción es requerida</div>
-                    }
-                </div>
+                        <div class="mb-4">
+                            <label for="descripcion" class="form-label fw-bold">
+                                <i class="bi bi-text-paragraph me-2"></i>Descripción
+                            </label>
+                            <textarea 
+                                class="form-control form-control-lg" 
+                                id="descripcion" 
+                                rows="4" 
+                                formControlName="descripcion_evento"
+                                placeholder="Descripción del evento..."></textarea>
+                            @if (registroEventos.get('descripcion_evento')?.invalid && registroEventos.get('descripcion_evento')?.touched) {
+                                <div class="text-danger small mt-2">
+                                    <i class="bi bi-exclamation-circle me-1"></i>
+                                    La descripción es requerida
+                                </div>
+                            }
+                        </div>
 
-                <div class="mb-3">
-                    <label for="estado" class="form-label fw-bold">Estado</label>
-                    <select class="form-select" id="estado" formControlName="estado">
-                        <option [ngValue]="true">Activo</option>
-                        <option [ngValue]="false">Inactivo</option>
-                    </select>
-                    @if (registroEventos.get('estado')?.invalid && registroEventos.get('estado')?.touched) {
-                    <div class="text-danger small mt-1">El estado es requerido</div>
-                    }
-                </div>
-                <div class="mb-3">
-                    <label for="tipoEventoId" class="form-label fw-bold">Tipo de Evento</label>
-                    <select class="form-select" id="tipoEventoId" formControlName="tipo_evento_id">
-                        <option [value]="0">Seleccionar...</option>
-                        @for (tipo of listaTipoEventos; track tipo.id) {
-                        <option [value]="tipo.id">{{ tipo.nombre_evento }}</option>
-                        }
-                    </select>
-                    @if (registroEventos.get('tipo_evento_id')?.invalid &&
-                    registroEventos.get('tipo_evento_id')?.touched) {
-                    <div class="text-danger small mt-1">El tipo de evento es requerido</div>
-                    }
-                </div>
-                @if (idEvento) {
-                    <button (click)="updateEvento()" type="submit" class="btn btn-primary">Editar Evento</button>
-                }@else {
-                    <button (click)="crearEvento()" type="submit" class="btn btn-primary">Crear Evento</button>
-                }
+                        <div class="mb-4">
+                            <label for="estado" class="form-label fw-bold">
+                                <i class="bi bi-toggle-on me-2"></i>Estado
+                            </label>
+                            <select class="form-select form-select-lg" id="estado" formControlName="estado">
+                                <option [ngValue]="1">Activo</option>
+                                <option [ngValue]="2">Inactivo</option>
+                            </select>
+                            @if (registroEventos.get('estado')?.invalid && registroEventos.get('estado')?.touched) {
+                                <div class="text-danger small mt-2">
+                                    <i class="bi bi-exclamation-circle me-1"></i>
+                                    El estado es requerido
+                                </div>
+                            }
+                        </div>
 
-                <div class="d-flex justify-content-end">
-                    <a routerLink="/eventos" type="button" class="btn btn-secondary me-2">Cancelar</a>
-                </div>
-            </form>
+                        <div class="mb-4">
+                            <label for="tipoEventoId" class="form-label fw-bold">
+                                <i class="bi bi-tag-fill me-2"></i>Tipo de Evento
+                            </label>
+                            <select class="form-select form-select-lg" id="tipoEventoId" formControlName="tipo_evento_id">
+                                <option [value]="0">Seleccionar...</option>
+                                @for (tipo of listaTipoEventos; track tipo.id) {
+                                    <option [value]="tipo.id">{{ tipo.nombre_evento }}</option>
+                                }
+                            </select>
+                            @if (registroEventos.get('tipo_evento_id')?.invalid && registroEventos.get('tipo_evento_id')?.touched) {
+                                <div class="text-danger small mt-2">
+                                    <i class="bi bi-exclamation-circle me-1"></i>
+                                    El tipo de evento es requerido
+                                </div>
+                            }
+                        </div>
 
+                        <div class="d-flex justify-content-end gap-3 mt-4 pt-3 border-top">
+                            <a routerLink="/eventos" class="btn btn-outline-secondary px-4">
+                                <i class="bi bi-x-circle me-2"></i>Cancelar
+                            </a>
+                            <button 
+                                type="submit" 
+                                class="btn btn-primary px-4"
+                                [disabled]="registroEventos.invalid">
+                                <i class="bi bi-check-circle me-2"></i>@if (idEvento) {Guardar Cambios} @else {Crear Evento}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

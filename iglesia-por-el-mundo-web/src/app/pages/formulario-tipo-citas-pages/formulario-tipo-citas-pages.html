@@ -1,33 +1,62 @@
-<div class="container">
-    <h2>Crear Nuevo Tipo de Cita</h2>
-    <form [formGroup]="registerForm" (ngSubmit)="crearTipoCita()">
-        <div class="form-group">
-            <label for="nombre_cita">Nombre del Evento</label>
-            <input type="text" class="form-control" id="nombre_cita" formControlName="nombre_cita" required>
-            @if (registerForm.get('nombre_cita')?.invalid && registerForm.get('nombre_cita')?.touched) {
-                <div class="text-danger">
-                    El nombre de la cita es requerido
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">@if (idTipoCita) {Editar} @else {Crear} Tipo de Cita</h4>
                 </div>
-            }
-        </div>
+                <div class="card-body p-4">
+                    <form [formGroup]="registerForm" (ngSubmit)="idTipoCita ? editarTipoCita() : crearTipoCita()">
+                        <div class="mb-4">
+                            <label for="nombre_cita" class="form-label fw-bold">
+                                <i class="bi bi-calendar-check-fill me-2"></i>Nombre del Tipo de Cita
+                            </label>
+                            <input 
+                                type="text" 
+                                class="form-control form-control-lg" 
+                                id="nombre_cita" 
+                                formControlName="nombre_cita"
+                                placeholder="Ingrese el nombre del tipo de cita">
+                            @if (registerForm.get('nombre_cita')?.invalid && registerForm.get('nombre_cita')?.touched) {
+                                <div class="text-danger small mt-2">
+                                    <i class="bi bi-exclamation-circle me-1"></i>
+                                    El nombre de la cita es requerido
+                                </div>
+                            }
+                        </div>
 
-        <div class="form-group">
-            <label for="descripcion_cita">Descripción de la cita</label>
-            <textarea class="form-control" id="descripcion_cita" formControlName="descripcion_cita" rows="4" required></textarea>
-            @if (registerForm.get('descripcion_cita')?.invalid && registerForm.get('descripcion_cita')?.touched) {
-                <div class="text-danger">
-                    La descripción de la cita es requerida
+                        <div class="mb-4">
+                            <label for="descripcion_cita" class="form-label fw-bold">
+                                <i class="bi bi-text-paragraph me-2"></i>Descripción de la Cita
+                            </label>
+                            <textarea 
+                                class="form-control form-control-lg" 
+                                id="descripcion_cita" 
+                                formControlName="descripcion_cita" 
+                                rows="4"
+                                placeholder="Ingrese la descripción del tipo de cita"></textarea>
+                            @if (registerForm.get('descripcion_cita')?.invalid && registerForm.get('descripcion_cita')?.touched) {
+                                <div class="text-danger small mt-2">
+                                    <i class="bi bi-exclamation-circle me-1"></i>
+                                    La descripción de la cita es requerida
+                                </div>
+                            }
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-3 mt-4 pt-3 border-top">
+                            <a routerLink="/tipoCitas" class="btn btn-outline-secondary px-4">
+                                <i class="bi bi-x-circle me-2"></i>Cancelar
+                            </a>
+                            <button 
+                                type="submit" 
+                                class="btn btn-primary px-4"
+                                [disabled]="registerForm.invalid">
+                                <i class="bi bi-check-circle me-2"></i>@if (idTipoCita) {Guardar Cambios} @else {Crear Tipo de Cita}
+                            </button>
+                        </div>
+                    </form>
                 </div>
-            }
+            </div>
         </div>
-
-        <div class="form-actions">
-            <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
-                Guardar
-            </button>
-            <button type="button" routerLink="/tipoCitas" class="btn btn-secondary">
-                Cancelar
-            </button>
-        </div>
-    </form>
+    </div>
 </div>

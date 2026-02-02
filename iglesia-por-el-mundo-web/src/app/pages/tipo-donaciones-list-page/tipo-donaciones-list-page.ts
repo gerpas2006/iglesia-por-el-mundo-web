@@ -13,6 +13,7 @@ export class TipoDonacionesListPage implements OnInit{
 
 
   listaTiposDonaciones: TipoDonacion[]=[]
+  mostrarToast: boolean = false
 
   constructor(private serviceTipoDonacion:TipoDonacionService){}
 
@@ -32,8 +33,8 @@ export class TipoDonacionesListPage implements OnInit{
 
   deleteTipoDonaciones(id:number):void{
     this.serviceTipoDonacion.deleteDonacion(id).subscribe(resp =>{
-      alert("Eliminando correctamente")
-      window.location.reload();
+      this.mostrarToast = true
+      setTimeout(() => window.location.reload(), 2000)
     },
       error =>{
         alert("Algo ha salido mal, intentalo mas tarde")

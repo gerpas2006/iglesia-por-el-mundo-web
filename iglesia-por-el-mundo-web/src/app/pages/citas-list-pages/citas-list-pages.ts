@@ -17,6 +17,7 @@ export class CitasListPages implements OnInit {
 
   listaCitas: Cita[] = []
   listaTipoCitas: TipoCita[]=[]
+  mostrarToast: boolean = false
 
   constructor(private serviceCitas: CitasService, private serviceTipoCitas:TipoCitasService) { }
 
@@ -39,8 +40,8 @@ export class CitasListPages implements OnInit {
 
   deleteCita(id: number): void {
     this.serviceCitas.deleteCitas(id).subscribe(resp => {
-      alert("Eliminado Correctamente");
-      window.location.reload();
+      this.mostrarToast = true
+      setTimeout(() => window.location.reload(), 2000)
     },
       error => {
         alert("Algo ha salido mal, intentalo más tarde")

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from "@angular/router";
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { OracionDto } from '../../dto/oraciones.dto';
 import { OracionesService } from '../../service/oraciones.service';
 import { TipoOracionesService } from '../../service/tipo-oraciones.service';
@@ -14,13 +14,30 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class FormularioOracionesPage implements OnInit{
 
+  idOracion: number | null = null;
   listaTipoOracion:TipoOracion[]=[]
 
 
-  constructor(private serviceOracion: OracionesService, private route:Router,private serviceTipoOraciones:TipoOracionesService){}
+  constructor(private serviceOracion: OracionesService, private router:Router,private serviceTipoOraciones:TipoOracionesService,private route:ActivatedRoute){}
   
   ngOnInit(): void {
     this.getTipoOraciones()
+    const id = +this.route.snapshot.paramMap.get('id')!;
+    if (id) {
+      this.idOracion = id;
+      this.serviceOracion.getOraciones().subscribe(resp =>{
+        const oracion = resp.find(o => o.id === id);
+        if (oracion) {
+          this.registroOraciones.patchValue({
+            nombre_oracion: oracion.nombre_oracion,
+            texto_oracion: oracion.texto_oracion,
+            autor: oracion.autor,
+            estado: oracion.estado,
+            tipo_oracion_id: oracion.tipo_oracion_id
+          });
+        }
+      });
+    }
   }
 
   registroOraciones = new FormGroup({
@@ -28,7 +45,7 @@ export class FormularioOracionesPage implements OnInit{
     texto_oracion: new FormControl('', [Validators.required]),
     autor: new FormControl('', [Validators.required, Validators.maxLength(255)]),
     estado: new FormControl(false),
-    tipo_oracion_id: new FormControl(null)
+    tipo_oracion_id: new FormControl<number | null>(null)
   });
 
   crearOracion(){
@@ -40,7 +57,7 @@ export class FormularioOracionesPage implements OnInit{
       this.registroOraciones.get('tipo_oracion_id')?.value!
     )
     this.serviceOracion.createOracion(nuevaOracion).subscribe(resp =>{
-      this.route.navigate(['oraciones'])
+      this.router.navigate(['oraciones'])
     },
     error =>{
       alert("Algo ha salido mal. intentalo de nuevo")
@@ -52,6 +69,23 @@ export class FormularioOracionesPage implements OnInit{
     this.serviceTipoOraciones.getTipoOraciones().subscribe(resp =>{
       this.listaTipoOracion = resp
     })
+  }
+
+  editarOracion(id:number){
+    const editarOracion = new OracionDto(
+      this.registroOraciones.get('nombre_oracion')?.value!,
+      this.registroOraciones.get('texto_oracion')?.value!,
+      this.registroOraciones.get('autor')?.value!,
+      this.registroOraciones.get('estado')?.value!,
+      this.registroOraciones.get('tipo_oracion_id')?.value!
+    )
+    this.serviceOracion.updateOracion(editarOracion,id).subscribe(resp =>{
+      this.router.navigate(['oraciones'])
+    },
+    error =>{
+      alert("Algo ha salido mal. intentalo de nuevo")
+    }
+  )
   }
 
 }

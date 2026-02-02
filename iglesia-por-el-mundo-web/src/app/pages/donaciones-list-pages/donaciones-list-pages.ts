@@ -13,6 +13,7 @@ import { RouterLink } from '@angular/router';
 export class DonacionesListPages implements OnInit {
 
   listaDonaciones: Donacion[] = []
+  mostrarToast: boolean = false
 
   constructor(private serviceDonaciones: DonacionesService) { }
 
@@ -28,8 +29,8 @@ export class DonacionesListPages implements OnInit {
 
   removeDonaciones(id: number): void {
     this.serviceDonaciones.removeDonacion(id).subscribe(resp => {
-        alert("Eliminado correctamente ")
-        window.location.reload();
+        this.mostrarToast = true
+        setTimeout(() => window.location.reload(), 2000)
     },
       error =>{
         alert("Algo ha slido mal, intentalo más tarde")

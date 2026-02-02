@@ -6,6 +6,7 @@ import { TipoEventoService } from '../../service/tipo-evento.service';
 import { TipoEventoDto } from '../../dto/tipoEvento.dto';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Evento } from '../../interface/eventos.interface';
+import { TipoEvento } from '../../interface/tipo-evento.interface';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { Evento } from '../../interface/eventos.interface';
 })
 export class FormulariEventosPage implements OnInit {
 
-  listaTipoEventos: TipoEventoDto[] = []
+  listaTipoEventos: TipoEvento[] = []
   listaEventos: Evento[] = []
   idEvento: number | null = null
   constructor(private serviceEventos: EventosService, private router: Router, private serviceTipoEventos: TipoEventoService,private route: ActivatedRoute) { }
@@ -26,7 +27,7 @@ export class FormulariEventosPage implements OnInit {
     fecha_evento: new FormControl('', Validators.required),
     ubicacion: new FormControl('', [Validators.required]),
     descripcion_evento: new FormControl('', [Validators.required]),
-    estado: new FormControl(true, [Validators.required]),
+    estado: new FormControl(1, [Validators.required]),
     tipo_evento_id: new FormControl(0, [Validators.required])
   })
 

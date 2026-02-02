@@ -1,5 +1,15 @@
 
 <body class="bg-light">
+
+    @if (mostrarToast) {
+    <div class="position-fixed top-50 start-50 translate-middle" style="z-index: 9999">
+        <div class="alert alert-success shadow-lg text-center p-4" role="alert" style="min-width: 400px">
+            <h3 class="mb-2">✓</h3>
+            <h5 class="mb-0">Cita eliminada correctamente</h5>
+        </div>
+    </div>
+    }
+
     <main class="container py-4">
 
         <div class="d-flex justify-content-between align-items-start mb-4">
@@ -124,7 +134,7 @@
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <div class="me-3">📅</div>
-                                        <div>Tipo: {{ cita.tipo_cita_id }}</div>
+                                        <div>{{ cita.tipo_cita?.nombre_cita }}</div>
                                     </div>
                                 </td>
                                 <td>{{ cita.nombre_solicitante }} {{ cita.apellido_solicitante }}</td>

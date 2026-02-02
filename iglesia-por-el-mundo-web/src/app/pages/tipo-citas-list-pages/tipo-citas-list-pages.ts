@@ -13,6 +13,7 @@ import { TipoCitasService } from '../../service/tipo-citas.service';
 export class TipoCitasListPages implements OnInit{
 
   listaTipoCitas: TipoCita[]=[]
+  mostrarToast: boolean = false
 
   constructor(private serviceTipoCitas: TipoCitasService){}
 
@@ -28,8 +29,8 @@ export class TipoCitasListPages implements OnInit{
 
   deleteTipoCita(id:number):void{
     this.serviceTipoCitas.deleteTipoCitas(id).subscribe(resp =>{
-      alert("Eliminado Correctamente")
-      window.location.reload();
+      this.mostrarToast = true
+      setTimeout(() => window.location.reload(), 2000)
     },
     error => {
       alert("Algo ha salido mal, intentalo más tarde")

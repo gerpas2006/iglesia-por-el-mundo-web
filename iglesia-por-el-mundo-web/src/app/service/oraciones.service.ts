@@ -26,4 +26,8 @@ export class OracionesService {
     return this.http.post<OracionResponse>(`${this.URL_BASE}/oraciones`,oracion)
   }
 
+  updateOracion(oracion:OracionDto, id:number):Observable<OracionResponse>{
+    return this.http.put<OracionResponse>(`${this.URL_BASE}/oraciones/${id}`,oracion)
+  }
+
 }

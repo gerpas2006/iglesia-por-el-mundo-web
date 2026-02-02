@@ -12,6 +12,7 @@ import { ReseneasService } from '../../service/reseneas.service';
 export class ReseneasListPages implements OnInit{
 
   listaReseneas: Resena[] =[]
+  mostrarToast: boolean = false
 
   constructor(private serviceResenea:ReseneasService){}
 
@@ -28,8 +29,8 @@ export class ReseneasListPages implements OnInit{
 
   deleteResenea(id:number):void{
     this.serviceResenea.deleteResenea(id).subscribe(resp =>{
-      alert("Eliminado Correctamente")
-      window.location.reload();
+      this.mostrarToast = true
+      setTimeout(() => window.location.reload(), 2000)
     },
     error =>{
         alert("Algo ha salido mal, intentalo mas tarde")

@@ -1,5 +1,14 @@
 <body class="bg-light">
 
+    @if (mostrarToast) {
+    <div class="position-fixed top-50 start-50 translate-middle" style="z-index: 9999">
+        <div class="alert alert-success shadow-lg text-center p-4" role="alert" style="min-width: 400px">
+            <h3 class="mb-2">✓</h3>
+            <h5 class="mb-0">Evento eliminado correctamente</h5>
+        </div>
+    </div>
+    }
+
     <div class="container py-4">
 
         <!-- Encabezado -->
@@ -76,7 +85,7 @@
                                 @if (evento.tipo_evento_id==null) {
                                 <td>No hay ningún tipo evento añadido</td>
                                 }@else {
-                                <td>{{evento.tipo_evento_id}}</td>
+                                <td>{{evento.tipo_evento?.nombre_evento}}</td>
                                 }
                                 @if (evento.estado) {
                                 <td><span class="badge bg-primary">Programado</span></td>

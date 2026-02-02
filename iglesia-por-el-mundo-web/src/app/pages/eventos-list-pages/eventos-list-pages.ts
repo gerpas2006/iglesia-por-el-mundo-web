@@ -13,6 +13,7 @@ import { Evento } from '../../interface/eventos.interface';
 export class EventosListPages implements OnInit{
 
   listaEventos: Evento[] = []
+  mostrarToast: boolean = false
 
   constructor(private serviceEventos: EventosService) {}
 
@@ -28,8 +29,8 @@ export class EventosListPages implements OnInit{
 
   removeEvento(id:number):void{
     this.serviceEventos.removeEventos(id).subscribe(resp=>{
-      alert("Eliminado correctamente")
-      window.location.reload();
+      this.mostrarToast = true
+      setTimeout(() => window.location.reload(), 2000)
     })
   }
 

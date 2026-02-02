@@ -25,5 +25,9 @@ export class TipoOracionesService {
   crearTipoOracion(TipoOracion:TipoOracionDto):Observable<TipoOracionResponse>{
     return this.http.post<TipoOracionResponse>(`${this.URL_BASE}/tipoOracion`,TipoOracion)
   }
+
+  updateTipoOracion(id:number, TipoOracion:TipoOracionDto):Observable<TipoOracionResponse>{
+    return this.http.put<TipoOracionResponse>(`${this.URL_BASE}/tipoOracion/${id}`,TipoOracion)
+  }
   
 }

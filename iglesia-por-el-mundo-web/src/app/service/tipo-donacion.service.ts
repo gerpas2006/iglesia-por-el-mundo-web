@@ -22,7 +22,7 @@ export class TipoDonacionService {
   }
 
   deleteDonacion(id:number):Observable<TipoDonacionResponse>{
-      return this.http.delete<TipoDonacionResponse>(`${this.URL_BASE}/tipoDonaciones/${id}`)
+    return this.http.delete<TipoDonacionResponse>(`${this.URL_BASE}/tipoDonaciones/${id}`)
   }
 
   updateTipoDonacion(TipoDonacion:TipoDonacionDto, id:number):Observable<TipoDonacionResponse>{

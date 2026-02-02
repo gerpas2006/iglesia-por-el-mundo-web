@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RegistroUsuario } from '../dto/registro.dto';
 import { RegistroResponse } from '../interface/registro.interface';
-import { LoginResponse } from '../interface/usuario.interface';
+import { LoginResponse } from '../interface/login.interface';
 import { Usuario } from '../dto/usuario.dto';
 
 @Injectable({
@@ -22,10 +22,6 @@ export class LoginService {
 
   loginUsuario(usuario:Usuario):Observable<LoginResponse>{
     return this.http.post<LoginResponse>(`${this.URL_BASE}/login`,usuario)
-  }
-
-  listarUsuarios():Observable<LoginResponse>{
-    return this.http.get<LoginResponse>(`${this.URL_BASE}/usuarios`)
   }
   
 }

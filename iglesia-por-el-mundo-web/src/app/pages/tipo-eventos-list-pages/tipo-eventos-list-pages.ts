@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TipoEventoService } from '../../service/tipo-evento.service';
 import { TipoEventoDto } from '../../dto/tipoEvento.dto';
 import { RouterLink } from '@angular/router';
+import { TipoEvento } from '../../interface/tipo-evento.interface';
 
 @Component({
   selector: 'app-tipo-eventos-list-pages',
@@ -11,7 +12,8 @@ import { RouterLink } from '@angular/router';
 })
 export class TipoEventosListPages implements OnInit {
 
-  listaTipoEventos: TipoEventoDto[] = []
+  listaTipoEventos: TipoEvento[] = []
+  mostrarToast: boolean = false
 
   constructor(private serviceTipoEvento: TipoEventoService) { }
 
@@ -31,8 +33,8 @@ export class TipoEventosListPages implements OnInit {
 
   deleteTipoEventos(id:number){
     return this.serviceTipoEvento.deleteTipoEvento(id).subscribe(resp =>{
-      alert("Eliminado Correcatamente")
-      window.location.reload();
+      this.mostrarToast = true
+      setTimeout(() => window.location.reload(), 2000)
     },
     error =>{
       alert("Algo a salido mal, intentalo más tarde")

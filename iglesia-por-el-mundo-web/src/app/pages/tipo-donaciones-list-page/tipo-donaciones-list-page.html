@@ -1,5 +1,14 @@
 <body class="bg-light">
 
+    @if (mostrarToast) {
+    <div class="position-fixed top-50 start-50 translate-middle" style="z-index: 9999">
+        <div class="alert alert-success shadow-lg text-center p-4" role="alert" style="min-width: 400px">
+            <h3 class="mb-2">✓</h3>
+            <h5 class="mb-0">Tipo de donación eliminado correctamente</h5>
+        </div>
+    </div>
+    }
+
     <div class="container py-4">
 
         <div class="d-flex justify-content-between align-items-start mb-4">
