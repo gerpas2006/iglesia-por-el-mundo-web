@@ -23,5 +23,9 @@ export class LoginService {
   loginUsuario(usuario:Usuario):Observable<LoginResponse>{
     return this.http.post<LoginResponse>(`${this.URL_BASE}/login`,usuario)
   }
+
+  listarUsuarios():Observable<LoginResponse>{
+    return this.http.get<LoginResponse>(`${this.URL_BASE}/usuarios`)
+  }
   
 }

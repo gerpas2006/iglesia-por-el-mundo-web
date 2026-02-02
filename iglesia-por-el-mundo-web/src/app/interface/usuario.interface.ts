@@ -11,4 +11,5 @@ export interface Usuario {
 export interface LoginResponse {
     token: string;
     user: Usuario;
+    usuarios: Usuario[];
 }

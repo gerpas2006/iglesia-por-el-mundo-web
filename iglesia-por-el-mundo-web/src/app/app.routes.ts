@@ -17,6 +17,8 @@ import { FormularioTipoCitasPages } from './pages/formulario-tipo-citas-pages/fo
 import { CitasListPages } from './pages/citas-list-pages/citas-list-pages';
 import { ReseneasListPages } from './pages/reseneas-list-pages/reseneas-list-pages';
 import { cUSTOMNAMEGuard } from './custom-name-guard';
+import { Usuario } from './dto/usuario.dto';
+import { UsuariosListPages } from './pages/usuarios-list-pages/usuarios-list-pages';
 
 
 export const routes: Routes = [
@@ -116,6 +118,12 @@ export const routes: Routes = [
     {
         path: 'formularioTipoDonacion',
         component: FomularioTipoDonacion,
+        canActivate: [cUSTOMNAMEGuard]
+    }
+    ,
+    {
+        path: 'usuarios',
+        component: UsuariosListPages,
         canActivate: [cUSTOMNAMEGuard]
     }
 
