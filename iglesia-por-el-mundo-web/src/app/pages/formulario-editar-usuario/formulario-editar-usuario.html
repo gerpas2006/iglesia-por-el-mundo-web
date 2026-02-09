@@ -6,7 +6,7 @@
                     <h4 class="mb-0">Editar Usuario</h4>
                 </div>
                 <div class="card-body p-4">
-                    <form [formGroup]="registroForm" (ngSubmit)="editarUsuario()" >
+                    <form [formGroup]="registroForm" (ngSubmit)="editarUsuario()">
                         <div class="mb-4">
                             <label for="nombre" class="form-label fw-bold">
                                 <i class="bi bi-person-fill me-2"></i>Nombre
@@ -17,12 +17,12 @@
                                 id="nombre" 
                                 formControlName="nombre"
                                 placeholder="Ingrese el nombre del usuario">
-                            @if (registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched) {
+                            <div *ngIf="registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched">
                                 <div class="text-danger small mt-2">
                                     <i class="bi bi-exclamation-circle me-1"></i>
                                     El nombre es requerido
                                 </div>
-                            }
+                            </div>
                         </div>
 
                         <div class="mb-4">
@@ -45,7 +45,7 @@
 
                         <div class="mb-4">
                             <label for="contrasenea" class="form-label fw-bold">
-                                <i class="bi bi-lock-fill me-2"></i>Contraseña
+                                <i class="bi bi-lock-fill me-2"></i>Contraseña (Opcional)
                             </label>
                             <input 
                                 type="password" 
@@ -53,7 +53,7 @@
                                 id="contrasenea" 
                                 formControlName="contrasenea"
                                 placeholder="Dejar en blanco para no cambiar">
-                            @if (registroForm.get('contrasenea')?.invalid && registroForm.get('contrasenea')?.touched) {
+                            @if (registroForm.get('contrasenea')?.invalid && registroForm.get('contrasenea')?.touched && registroForm.get('contrasenea')?.value) {
                                 <div class="text-danger small mt-2">
                                     <i class="bi bi-exclamation-circle me-1"></i>
                                     La contraseña debe tener entre 8 y 20 caracteres
@@ -63,7 +63,7 @@
 
                         <div class="mb-4">
                             <label for="confirmarContrasenea" class="form-label fw-bold">
-                                <i class="bi bi-lock-fill me-2"></i>Confirmar Contraseña
+                                <i class="bi bi-lock-fill me-2"></i>Confirmar Contraseña (Opcional)
                             </label>
                             <input 
                                 type="password" 
@@ -71,7 +71,7 @@
                                 id="confirmarContrasenea" 
                                 formControlName="confirmarContrasenea"
                                 placeholder="Confirmar contraseña">
-                            @if (registroForm.get('confirmarContrasenea')?.invalid && registroForm.get('confirmarContrasenea')?.touched) {
+                            @if (registroForm.get('confirmarContrasenea')?.invalid && registroForm.get('confirmarContrasenea')?.touched && registroForm.get('confirmarContrasenea')?.value) {
                                 <div class="text-danger small mt-2">
                                     <i class="bi bi-exclamation-circle me-1"></i>
                                     La confirmación debe tener entre 8 y 20 caracteres
@@ -86,7 +86,7 @@
                             <button 
                                 type="submit" 
                                 class="btn btn-primary px-4"
-                                [disabled]="registroForm.invalid">
+                                [disabled]="registroForm.get('nombre')?.invalid || registroForm.get('emailUsuario')?.invalid">
                                 <i class="bi bi-check-circle me-2"></i>Guardar Cambios
                             </button>
                         </div>

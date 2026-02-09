@@ -21,7 +21,7 @@ export class UsuarioService {
     return this.http.delete<UsuarioResponse>(`${this.URL_BASE}/usuarios/${id}`)
   }
 
-  updateUsuario(id:number, usuario:any):Observable<UsuarioResponse>{
+  updateUsuario(id:number, usuario:RegistroUsuario):Observable<UsuarioResponse>{
     return this.http.put<UsuarioResponse>(`${this.URL_BASE}/usuarios/${id}`, usuario)
   }
 }
