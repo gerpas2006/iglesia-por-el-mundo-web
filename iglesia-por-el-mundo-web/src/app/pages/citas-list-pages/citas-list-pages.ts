@@ -5,6 +5,7 @@ import { CitasService } from '../../service/citas.service';
 import { RouterLink } from '@angular/router';
 import { TipoCitasService } from '../../service/tipo-citas.service';
 import { TipoCita } from '../../interface/tipo-citas.interface';
+import { CitaDto } from '../../dto/cita.dto';
 
 @Component({
   selector: 'app-citas-list-pages',
@@ -19,7 +20,28 @@ export class CitasListPages implements OnInit {
   listaTipoCitas: TipoCita[]=[]
   mostrarToast: boolean = false
 
-  constructor(private serviceCitas: CitasService, private serviceTipoCitas:TipoCitasService) { }
+  constructor(private serviceCitas: CitasService, private serviceTipoCitas:TipoCitasService) {}
+
+  cambiarEstadoCita(cita: Cita, nuevoEstado: string): void {
+    const citaActualizada = new CitaDto(
+      cita.nombre_solicitante,
+      cita.apellido_solicitante,
+      cita.fecha_y_hora_cita,
+      cita.mensaje,
+      nuevoEstado,
+      cita.contacto,
+      cita.tipo_cita_id
+    );
+
+    this.serviceCitas.updateCita(cita.id, citaActualizada).subscribe(
+      resp => {
+        this.getCitas();
+      },
+      error => {
+        alert('Error al actualizar el estado de la cita');
+      }
+    );
+  }
 
   ngOnInit(): void {
     this.getTipoCitas()
@@ -72,7 +94,5 @@ export class CitasListPages implements OnInit {
   filtrarPorTipoCita(id:string){
     return this.listaCitas.filter(c => c.tipo_cita_id.toString() === id)
   }
-
-
 
 }

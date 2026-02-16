@@ -11,35 +11,28 @@
                             <label for="nombre" class="form-label fw-bold">
                                 <i class="bi bi-person-fill me-2"></i>Nombre
                             </label>
-                            <input 
-                                type="text" 
-                                class="form-control form-control-lg" 
-                                id="nombre" 
-                                formControlName="nombre"
+                            <input type="text" class="form-control form-control-lg" id="nombre" formControlName="nombre"
                                 placeholder="Ingrese el nombre del usuario">
-                            <div *ngIf="registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched">
-                                <div class="text-danger small mt-2">
-                                    <i class="bi bi-exclamation-circle me-1"></i>
-                                    El nombre es requerido
-                                </div>
+                            @if (registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched) {
+                            <div class="text-danger small mt-2">
+                                <i class="bi bi-exclamation-circle me-1"></i>
+                                El nombre es requerido
                             </div>
+                            }
                         </div>
 
                         <div class="mb-4">
                             <label for="emailUsuario" class="form-label fw-bold">
                                 <i class="bi bi-envelope-fill me-2"></i>Email
                             </label>
-                            <input 
-                                type="email" 
-                                class="form-control form-control-lg" 
-                                id="emailUsuario" 
-                                formControlName="emailUsuario"
-                                placeholder="correo@ejemplo.com">
-                            @if (registroForm.get('emailUsuario')?.invalid && registroForm.get('emailUsuario')?.touched) {
-                                <div class="text-danger small mt-2">
-                                    <i class="bi bi-exclamation-circle me-1"></i>
-                                    El email es requerido y debe ser válido
-                                </div>
+                            <input type="email" class="form-control form-control-lg" id="emailUsuario"
+                                formControlName="emailUsuario" placeholder="correo@ejemplo.com">
+                            @if (registroForm.get('emailUsuario')?.invalid && registroForm.get('emailUsuario')?.touched)
+                            {
+                            <div class="text-danger small mt-2">
+                                <i class="bi bi-exclamation-circle me-1"></i>
+                                El email es requerido y debe ser válido
+                            </div>
                             }
                         </div>
 
@@ -47,17 +40,14 @@
                             <label for="contrasenea" class="form-label fw-bold">
                                 <i class="bi bi-lock-fill me-2"></i>Contraseña (Opcional)
                             </label>
-                            <input 
-                                type="password" 
-                                class="form-control form-control-lg" 
-                                id="contrasenea" 
-                                formControlName="contrasenea"
-                                placeholder="Dejar en blanco para no cambiar">
-                            @if (registroForm.get('contrasenea')?.invalid && registroForm.get('contrasenea')?.touched && registroForm.get('contrasenea')?.value) {
-                                <div class="text-danger small mt-2">
-                                    <i class="bi bi-exclamation-circle me-1"></i>
-                                    La contraseña debe tener entre 8 y 20 caracteres
-                                </div>
+                            <input type="password" class="form-control form-control-lg" id="contrasenea"
+                                formControlName="contrasenea" placeholder="Dejar en blanco para no cambiar">
+                            @if (registroForm.get('contrasenea')?.invalid && registroForm.get('contrasenea')?.touched &&
+                            registroForm.get('contrasenea')?.value) {
+                            <div class="text-danger small mt-2">
+                                <i class="bi bi-exclamation-circle me-1"></i>
+                                La contraseña debe tener entre 8 y 20 caracteres
+                            </div>
                             }
                         </div>
 
@@ -65,17 +55,15 @@
                             <label for="confirmarContrasenea" class="form-label fw-bold">
                                 <i class="bi bi-lock-fill me-2"></i>Confirmar Contraseña (Opcional)
                             </label>
-                            <input 
-                                type="password" 
-                                class="form-control form-control-lg" 
-                                id="confirmarContrasenea" 
-                                formControlName="confirmarContrasenea"
-                                placeholder="Confirmar contraseña">
-                            @if (registroForm.get('confirmarContrasenea')?.invalid && registroForm.get('confirmarContrasenea')?.touched && registroForm.get('confirmarContrasenea')?.value) {
-                                <div class="text-danger small mt-2">
-                                    <i class="bi bi-exclamation-circle me-1"></i>
-                                    La confirmación debe tener entre 8 y 20 caracteres
-                                </div>
+                            <input type="password" class="form-control form-control-lg" id="confirmarContrasenea"
+                                formControlName="confirmarContrasenea" placeholder="Confirmar contraseña">
+                            @if (registroForm.get('confirmarContrasenea')?.invalid &&
+                            registroForm.get('confirmarContrasenea')?.touched &&
+                            registroForm.get('confirmarContrasenea')?.value) {
+                            <div class="text-danger small mt-2">
+                                <i class="bi bi-exclamation-circle me-1"></i>
+                                La confirmación debe tener entre 8 y 20 caracteres
+                            </div>
                             }
                         </div>
 
@@ -83,9 +71,7 @@
                             <a routerLink="/usuarios" class="btn btn-outline-secondary px-4">
                                 <i class="bi bi-x-circle me-2"></i>Cancelar
                             </a>
-                            <button 
-                                type="submit" 
-                                class="btn btn-primary px-4"
+                            <button type="submit" class="btn btn-primary px-4"
                                 [disabled]="registroForm.get('nombre')?.invalid || registroForm.get('emailUsuario')?.invalid">
                                 <i class="bi bi-check-circle me-2"></i>Guardar Cambios
                             </button>

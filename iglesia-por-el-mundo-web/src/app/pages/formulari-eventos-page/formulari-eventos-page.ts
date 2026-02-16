@@ -33,7 +33,10 @@ export class FormulariEventosPage implements OnInit {
 
   crearEvento() {
     const fechaInput = this.registroEventos.get('fecha_evento')?.value!;
-    const fechaFormateada = fechaInput.replace('T', ' ') + ':00';
+    // Convert from datetime-local format (YYYY-MM-DDTHH:MM) to backend format (YYYY-MM-DD HH:MM:SS)
+    const fechaFormateada = fechaInput.includes('T') 
+      ? fechaInput.replace('T', ' ') + ':00'
+      : fechaInput + ':00';
 
     const nuevoEvento = new EventoDto(
       this.registroEventos.get('nombre_evento')?.value!,
@@ -60,10 +63,20 @@ export class FormulariEventosPage implements OnInit {
       this.serviceEventos.getEventos().subscribe(resp =>{
         this.listaEventos = resp
       const evento = this.listaEventos.find(e => e.id === id)
+      
+      // Convert date from backend format (YYYY-MM-DD HH:MM:SS) to datetime-local format (YYYY-MM-DDTHH:MM)
+      let fechaFormateada = evento?.fecha_evento;
+      if (fechaFormateada) {
+        // Remove seconds if present
+        fechaFormateada = fechaFormateada.substring(0, 16);
+        // Replace space with T for datetime-local input
+        fechaFormateada = fechaFormateada.replace(' ', 'T');
+      }
+      
       this.registroEventos.patchValue({
         nombre_evento: evento?.nombre_evento,
         descripcion_evento: evento?.descripcion_evento,
-        fecha_evento: evento?.fecha_evento,
+        fecha_evento: fechaFormateada,
         estado: evento?.estado,
         tipo_evento_id: evento?.tipo_evento_id,
         ubicacion: evento?.ubicacion
@@ -80,7 +93,10 @@ export class FormulariEventosPage implements OnInit {
 
   updateEvento(): void {
     const fechaInput = this.registroEventos.get('fecha_evento')?.value!;
-    const fechaFormateada = fechaInput.replace('T', ' ') + ':00';
+    // Convert from datetime-local format (YYYY-MM-DDTHH:MM) to backend format (YYYY-MM-DD HH:MM:SS)
+    const fechaFormateada = fechaInput.includes('T') 
+      ? fechaInput.replace('T', ' ') + ':00'
+      : fechaInput + ':00';
 
     const editarEvento = new EventoDto(
       this.registroEventos.get('nombre_evento')?.value!,

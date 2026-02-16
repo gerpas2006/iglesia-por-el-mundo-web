@@ -155,10 +155,10 @@
                                 </td>
                                 <td class="small">{{ cita.mensaje }}</td>
                                 <td class="text-end">
-                                    <button class="btn btn-outline-warning btn-sm" title="Marcar como Pendiente"><i class="bi bi-clock"></i></button>
-                                    <button class="btn btn-outline-success btn-sm" title="Aprobar"><i class="bi bi-check-circle"></i></button>
-                                    <button class="btn btn-outline-danger btn-sm" title="Rechazar"><i class="bi bi-x-circle"></i></button>
-                                    <button onclick="alert('¿Seguro que quieres eliminar la cita?')" (click)="deleteCita(cita.id)" class="btn btn-outline-danger btn-sm" title="Eliminar"><i class="bi bi-trash"></i></button>
+                                    <button class="btn btn-outline-warning btn-sm" (click)="cambiarEstadoCita(cita, 'pendiente')" title="Marcar como pendiente"><i class="bi bi-clock"></i></button>
+                                    <button class="btn btn-outline-success btn-sm" (click)="cambiarEstadoCita(cita, 'aprobada')" title="Aprobar cita"><i class="bi bi-check-circle"></i></button>
+                                    <button class="btn btn-outline-danger btn-sm" (click)="cambiarEstadoCita(cita, 'rechazada')" title="Rechazar cita"><i class="bi bi-x-circle"></i></button>
+                                    <button (click)="deleteCita(cita.id)" class="btn btn-outline-danger btn-sm" title="Eliminar"><i class="bi bi-trash"></i></button>
                                 </td>
                             </tr>
                             }
