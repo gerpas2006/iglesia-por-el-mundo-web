@@ -1,4 +1,3 @@
-
 <body class="bg-light">
 
     @if (mostrarToast) {
@@ -26,7 +25,7 @@
                 <div class="card shadow-sm rounded-3 h-100">
                     <div class="card-body">
                         <small class="text-muted">Total Reseñas</small>
-                        <div class="h3 fw-bold mt-2">{{busqueda?.value ? buscarReseneas(busqueda.value).length : listaReseneas.length}}</div>
+                        <div class="h3 fw-bold mt-2">{{getReseneasFiltradas().length}}</div>
                     </div>
                 </div>
             </div>
@@ -46,21 +45,37 @@
         <div class="card shadow-sm rounded-3 mb-5">
             <div class="card-body">
 
-                <!-- Buscador -->
+                <!-- Buscador y Filtro -->
                 <div class="mb-4">
-                    <div class="input-group">
-                        <span class="input-group-text bg-white border-0">🔍</span>
-                        <input #busqueda (input)="0" type="text" class="form-control"
-                            placeholder="Buscar por nombre, categoría o comentario...">
+                    <div class="row g-3">
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-0">🔍</span>
+                                <input [(ngModel)]="textoBusqueda" type="text" class="form-control"
+                                    placeholder="Buscar por nombre, título o comentario...">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <select [(ngModel)]="calificacionFiltro" class="form-select">
+                                <option value="0">Filtrar por calificación</option>
+                                <option value="5">5 Estrellas ★★★★★</option>
+                                <option value="4">4 Estrellas ★★★★</option>
+                                <option value="3">3 Estrellas ★★★</option>
+                                <option value="2">2 Estrellas ★★</option>
+                                <option value="1">1 Estrella ★</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Tabla de reseñas -->
+                @if (getReseneasFiltradas().length > 0) {
                 <div class="table-responsive">
                     <table class="table align-middle mb-0">
                         <thead class="small text-muted">
                             <tr>
                                 <th scope="col">Usuario</th>
+                                <th scope="col">Título</th>
                                 <th scope="col">Calificación</th>
                                 <th scope="col">Comentario</th>
                                 <th scope="col">Fecha</th>
@@ -68,21 +83,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for (resena of busqueda.value ? buscarReseneas(busqueda.value) : listaReseneas; track resena.id) {
+                            @for (resena of getReseneasFiltradas(); track resena.id) {
                             <tr>
                                 <td>
-                                    <div class="fw-semibold">{{resena.usuario}}</div>
+                                    <div class="fw-semibold">{{resena.user.name}}</div>
+                                </td>
+                                <td>
                                     <div class="text-muted small">{{resena.titulo_reseneas}}</div>
+
                                 </td>
                                 <td>
                                     <div class="text-warning">
                                         @for (star of [1,2,3,4,5]; track star) {
-                                            @if (star <= resena.calificacion_resenea) {
-                                                <span>★</span>
+                                        @if (star <= resena.calificacion_resenea) { <span>★</span>
                                             } @else {
-                                                <span>☆</span>
+                                            <span>☆</span>
                                             }
-                                        }
+                                            }
                                     </div>
                                 </td>
                                 <td class="text-muted small">
@@ -91,9 +108,9 @@
                                 <td class="text-muted small">{{resena.fecha_resenea}}</td>
                                 <td class="text-end">
                                     <div class="btn-group btn-group-sm" role="group">
-                                        <button onclick="alert('Seguro que quieres eliminar la reseña')" (click)="deleteResenea(resena.id)" class="btn btn-outline-danger btn-sm"><i
-                                            class="bi bi-trash"></i></button>
-                                        
+                                        <button (click)="deleteResenea(resena.id)"
+                                            class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+
                                     </div>
                                 </td>
                             </tr>
@@ -101,6 +118,12 @@
                         </tbody>
                     </table>
                 </div>
+                } @else {
+                <div class="alert alert-info text-center py-4">
+                    <p class="mb-0"><i class="bi bi-info-circle"></i> No se encontraron reseñas con los filtros
+                        aplicados</p>
+                </div>
+                }
 
             </div>
         </div>
