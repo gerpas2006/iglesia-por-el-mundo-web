@@ -81,7 +81,7 @@
                                     <button [routerLink]="['/formularioUsuario',usuario.id]" class="btn btn-outline-secondary btn-sm">
                                         <i class="bi bi-pencil"></i>
                                     </button>
-                                    <button onclick="alert('¿Seguro que quieres eliminar este usuario?')"
+                                    <button
                                         (click)="deleteUsuario(usuario.id)" class="btn btn-outline-danger btn-sm">
                                         <i class="bi bi-trash"></i>
                                     </button>

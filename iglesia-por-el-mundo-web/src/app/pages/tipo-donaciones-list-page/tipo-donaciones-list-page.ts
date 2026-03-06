@@ -32,14 +32,12 @@ export class TipoDonacionesListPage implements OnInit{
   }
 
   deleteTipoDonaciones(id:number):void{
-    this.serviceTipoDonacion.deleteDonacion(id).subscribe(resp =>{
-      this.mostrarToast = true
-      setTimeout(() => window.location.reload(), 2000)
-    },
-      error =>{
-        alert("Algo ha salido mal, intentalo mas tarde")
-      }
-    )
+    if (confirm('¿Seguro que quieres eliminar el evento?')) {
+      this.serviceTipoDonacion.deleteDonacion(id).subscribe(resp =>{
+        this.mostrarToast = true
+        setTimeout(() => window.location.reload(), 2000)
+      })
+    }
   }
 
 

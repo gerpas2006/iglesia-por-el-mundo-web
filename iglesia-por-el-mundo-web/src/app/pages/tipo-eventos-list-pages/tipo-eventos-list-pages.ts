@@ -32,7 +32,8 @@ export class TipoEventosListPages implements OnInit {
   }
 
   deleteTipoEventos(id:number){
-    return this.serviceTipoEvento.deleteTipoEvento(id).subscribe(resp =>{
+    if (confirm('¿Seguro que quieres eliminar el evento?')) {
+    this.serviceTipoEvento.deleteTipoEvento(id).subscribe(resp =>{
       this.mostrarToast = true
       setTimeout(() => window.location.reload(), 2000)
     },
@@ -41,6 +42,7 @@ export class TipoEventosListPages implements OnInit {
     }
   )
   }
+}
 
 
 
