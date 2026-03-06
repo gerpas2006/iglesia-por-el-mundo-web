@@ -31,17 +31,12 @@ export class ReseneasListPages implements OnInit{
   }
 
   deleteResenea(id:number):void{
-    if(!confirm('¿Estás seguro de que deseas eliminar esta reseña?')){
-      return
+    if (confirm('¿Seguro que quieres eliminar el evento?')) {
+      this.serviceResenea.deleteResenea(id).subscribe(resp =>{
+        this.mostrarToast = true
+        setTimeout(() => window.location.reload(), 2000)
+      })
     }
-    this.serviceResenea.deleteResenea(id).subscribe(resp =>{
-      this.mostrarToast = true
-      setTimeout(() => window.location.reload(), 2000)
-    },
-    error =>{
-        alert("Algo ha salido mal, intentalo mas tarde")
-    }
-  )
   }
 
   getReseneasFiltradas(){

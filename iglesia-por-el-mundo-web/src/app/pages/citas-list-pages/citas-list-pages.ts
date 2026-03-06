@@ -61,16 +61,13 @@ export class CitasListPages implements OnInit {
   }
 
   deleteCita(id: number): void {
-    this.serviceCitas.deleteCitas(id).subscribe(resp => {
-      this.mostrarToast = true
-      setTimeout(() => window.location.reload(), 2000)
-    },
-      error => {
-        alert("Algo ha salido mal, intentalo más tarde")
-      }
-    )
+    if (confirm('¿Seguro que quieres eliminar el evento?')) {
+      this.serviceCitas.deleteCitas(id).subscribe(resp => {
+        this.mostrarToast = true
+        setTimeout(() => window.location.reload(), 2000)
+      })
+    }
   }
-
   contarCitasPendientes(): number {
     return this.listaCitas.filter(c => c.estado.toLowerCase() === 'pendiente').length;
   }

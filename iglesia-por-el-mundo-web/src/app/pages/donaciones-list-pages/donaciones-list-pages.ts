@@ -28,14 +28,12 @@ export class DonacionesListPages implements OnInit {
   }
 
   removeDonaciones(id: number): void {
-    this.serviceDonaciones.removeDonacion(id).subscribe(resp => {
+    if (confirm('¿Seguro que quieres eliminar el evento?')) {
+      this.serviceDonaciones.removeDonacion(id).subscribe(resp => {
         this.mostrarToast = true
         setTimeout(() => window.location.reload(), 2000)
-    },
-      error =>{
-        alert("Algo ha slido mal, intentalo más tarde")
-      }
-    )
+      })
+    }
   }
 
   calcularMedia() {

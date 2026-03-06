@@ -27,6 +27,7 @@ export class TipoOracionesListPages implements OnInit{
   }
 
   deleteTipoOracion(id:number):void{
+        if (confirm('¿Seguro que quieres eliminar el evento?')) {
     this.serviceTipoOracion.deleteTipoOracion(id).subscribe(resp =>{
       this.mostrarToast = true
       setTimeout(() => window.location.reload(), 2000)
@@ -36,6 +37,7 @@ export class TipoOracionesListPages implements OnInit{
     }
   )
   }
+}
 
   buscarTipoOracion(nombre:string){
     return this.listaTipoOraciones.filter(o => o.nombre_oracion.toLowerCase().includes(nombre.toLowerCase()))

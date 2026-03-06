@@ -28,6 +28,7 @@ export class TipoCitasListPages implements OnInit{
   }
 
   deleteTipoCita(id:number):void{
+        if (confirm('¿Seguro que quieres eliminar el evento?')) {
     this.serviceTipoCitas.deleteTipoCitas(id).subscribe(resp =>{
       this.mostrarToast = true
       setTimeout(() => window.location.reload(), 2000)
@@ -37,6 +38,7 @@ export class TipoCitasListPages implements OnInit{
     }
   )
   }
+}
 
   buscarTipoCita(nombre:string){
     return this.listaTipoCitas.filter(t => t.nombre_cita.toLowerCase().includes(nombre.toLowerCase()))

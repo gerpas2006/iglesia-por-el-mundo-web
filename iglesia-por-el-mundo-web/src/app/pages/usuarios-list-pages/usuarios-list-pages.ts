@@ -28,6 +28,7 @@ export class UsuariosListPages implements OnInit {
   }
 
   deleteUsuario(id: number): void {
+        if (confirm('¿Seguro que quieres eliminar el evento?')) {
     this.serviceUsuario.deleteUsuario(id).subscribe(resp => {
       this.mostrarToast = true
       setTimeout(() => window.location.reload(), 2000)
@@ -36,6 +37,7 @@ export class UsuariosListPages implements OnInit {
         alert("Algo ha salido mal,intentelo mas tarde")
       })
   }
+}
 
   contarAdmin(): number {
     let resul = 0

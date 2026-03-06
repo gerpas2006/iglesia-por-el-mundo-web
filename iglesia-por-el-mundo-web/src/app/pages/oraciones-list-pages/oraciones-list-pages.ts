@@ -28,6 +28,7 @@ export class OracionesListPages implements OnInit{
   }
 
   deleteOraciones(id:number):void{
+        if (confirm('¿Seguro que quieres eliminar el evento?')) {
     this.serviceOraciones.deleteOracion(id).subscribe(resp =>{
       this.mostrarToast = true
       setTimeout(() => window.location.reload(), 2000)
@@ -37,6 +38,7 @@ export class OracionesListPages implements OnInit{
     }
   )
   }
+}
 
   buscarOracion(nombre:string){
     return this.listaOraciones.filter(o => o.nombre_oracion.toLowerCase().includes(nombre.toLowerCase()))
