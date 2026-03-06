@@ -28,11 +28,13 @@ export class EventosListPages implements OnInit{
   }
 
   removeEvento(id:number):void{
+    if (confirm('¿Seguro que quieres eliminar el evento?')) {
     this.serviceEventos.removeEventos(id).subscribe(resp=>{
       this.mostrarToast = true
       setTimeout(() => window.location.reload(), 2000)
     })
   }
+}
 
   buscarEvento(nombre:string){
     return this.listaEventos.filter(e => e.nombre_evento.toLowerCase().includes(nombre.toLowerCase()))
