@@ -27,7 +27,7 @@ export class FormulariEventosPage implements OnInit {
     fecha_evento: new FormControl('', Validators.required),
     ubicacion: new FormControl('', [Validators.required]),
     descripcion_evento: new FormControl('', [Validators.required]),
-    estado: new FormControl(1, [Validators.required]),
+    estado: new FormControl(true, [Validators.required]),
     tipo_evento_id: new FormControl(0, [Validators.required])
   })
 

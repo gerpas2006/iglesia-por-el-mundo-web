@@ -83,8 +83,8 @@
                                 <i class="bi bi-toggle-on me-2"></i>Estado
                             </label>
                             <select class="form-select form-select-lg" id="estado" formControlName="estado">
-                                <option [ngValue]="1">Activo</option>
-                                <option [ngValue]="2">Inactivo</option>
+                                <option [ngValue]="true">Activo</option>
+                                <option [ngValue]="false">Inactivo</option>
                             </select>
                             @if (registroEventos.get('estado')?.invalid && registroEventos.get('estado')?.touched) {
                                 <div class="text-danger small mt-2">
